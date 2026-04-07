@@ -102,9 +102,9 @@ function renderFeaturedMeals(meals) {
             </div>
             <div class="flex flex-col gap-1">
                 <div class="flex justify-between items-start">
-                    <h4 class="font-label font-bold text-sm line-clamp-1 flex-grow text-primary">${m.name}</h4>
+                    <h4 class="font-label font-bold text-[13px] md:text-sm line-clamp-1 flex-grow text-primary">${m.name}</h4>
                 </div>
-                <p class="text-[10px] text-on-surface-variant line-clamp-2 italic h-6">${m.description || ''}</p>
+                <p class="text-[9px] md:text-[10px] text-on-surface-variant line-clamp-2 italic h-6">${m.description || ''}</p>
                 <div class="flex items-center justify-between mt-2">
                     <div class="flex items-center gap-1 text-[10px] text-orange-500 font-bold">
                         <span class="material-symbols-outlined text-[12px] material-symbols-fill">star</span>
@@ -353,10 +353,10 @@ function injectProductModal() {
             <!-- Modal Body (Scrollable) -->
             <div class="p-6 overflow-y-auto hide-scrollbar flex-grow">
                 <div class="flex justify-between items-start mb-2">
-                    <h2 id="modal-product-name" class="text-2xl font-headline font-extrabold text-primary">Dish Name</h2>
-                    <span id="modal-product-price" class="text-xl font-bold bg-secondary-container px-3 py-1 rounded-full text-slate-800">₦0</span>
+                    <h2 id="modal-product-name" class="text-[22px] md:text-2xl font-headline font-extrabold text-primary">Dish Name</h2>
+                    <span id="modal-product-price" class="text-lg md:text-xl font-bold bg-secondary-container px-3 py-1 rounded-full text-slate-800">₦0</span>
                 </div>
-                <p id="modal-product-description" class="text-on-surface-variant text-sm mb-6"></p>
+                <p id="modal-product-description" class="text-[13px] md:text-sm text-on-surface-variant mb-6"></p>
                 
                 <!-- Quantity Selector -->
                 <div class="bg-surface-container-low p-4 rounded-2xl mb-6 shadow-inner">
@@ -414,40 +414,40 @@ function injectNavigationDrawer() {
                 </button>
             </div>
             <div class="flex-grow p-6 overflow-y-auto">
-                <nav class="flex flex-col gap-6">
-                    <a href="index.html" class="flex items-center gap-4 text-slate-900 font-bold hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined">home</span>
+                <nav class="flex flex-col gap-4">
+                    <a href="index.html" class="flex items-center gap-3 text-slate-900 font-bold text-sm hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">home</span>
                         Explore
                     </a>
-                    <a href="shop.html" class="flex items-center gap-4 text-slate-900 font-bold hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined">restaurant_menu</span>
+                    <a href="shop.html" class="flex items-center gap-3 text-slate-900 font-bold text-sm hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">restaurant_menu</span>
                         Our Menu
                     </a>
                     <hr class="border-surface-container-high">
-                    <a href="about.html" class="flex items-center gap-4 text-slate-600 font-medium hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined">info</span>
+                    <a href="about.html" class="flex items-center gap-3 text-slate-600 font-medium text-xs hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">info</span>
                         About Us
                     </a>
-                    <a href="contact.html" class="flex items-center gap-4 text-slate-600 font-medium hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined">mail</span>
+                    <a href="contact.html" class="flex items-center gap-3 text-slate-600 font-medium text-xs hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">mail</span>
                         Contact Us
                     </a>
-                    <a href="terms.html" class="flex items-center gap-4 text-slate-600 font-medium hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined">shield_person</span>
+                    <a href="terms.html" class="flex items-center gap-3 text-slate-600 font-medium text-xs hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">shield_person</span>
                         Terms & Conditions
                     </a>
-                    <a href="refund.html" class="flex items-center gap-4 text-slate-600 font-medium hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined">assignment_return</span>
+                    <a href="refund.html" class="flex items-center gap-3 text-slate-600 font-medium text-xs hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">assignment_return</span>
                         Refund Policy
                     </a>
-                    <a href="track.html" class="flex items-center gap-4 text-slate-900 font-bold hover:text-primary transition-colors mt-4">
-                        <span class="material-symbols-outlined text-primary">local_shipping</span>
+                    <a href="track.html" class="flex items-center gap-3 text-slate-900 font-bold text-sm hover:text-primary transition-colors mt-2">
+                        <span class="material-symbols-outlined text-primary text-[20px]">local_shipping</span>
                         Track Order
                     </a>
                 </nav>
             </div>
             <div class="p-6 border-t border-surface-container-high">
-                <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest text-center">Fire & Flavor Since 2024</p>
+                <p class="text-[9px] text-on-surface-variant font-bold uppercase tracking-widest text-center">Fire & Flavor Since 2024</p>
             </div>
         </div>
     </div>

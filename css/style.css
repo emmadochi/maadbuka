@@ -259,8 +259,8 @@ nav a:hover::after {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background-color: #25D366;
     color: white;
     border-radius: 50%;
@@ -284,7 +284,7 @@ nav a:hover::after {
 }
 
 .whatsapp-float .material-symbols-outlined {
-    font-size: 32px;
+    font-size: 24px;
 }
 
 /* Add a subtle pulse for attention */
@@ -309,10 +309,10 @@ nav a:hover::after {
 @media (max-width: 768px) {
     .whatsapp-float {
         bottom: 7rem; /* Higher on mobile to avoid overlapping with bottom bar */
-        width: 54px;
-        height: 54px;
+        width: 44px;
+        height: 44px;
     }
     .whatsapp-float .material-symbols-outlined {
-        font-size: 28px;
+        font-size: 20px;
     }
 }

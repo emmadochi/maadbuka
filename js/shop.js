@@ -83,7 +83,7 @@ function renderTrending() {
                     <span class="material-symbols-outlined text-[14px] text-orange-500 fill-current">star</span>
                 </div>
             </div>
-            <h4 class="font-bold text-xs line-clamp-1 text-slate-800">${p.name}</h4>
+            <h4 class="font-bold text-[11px] md:text-xs line-clamp-1 text-slate-800">${p.name}</h4>
             <div class="flex justify-between items-center mt-1">
                 <span class="font-headline font-extrabold text-sm text-primary">₦${p.price.toLocaleString()}</span>
                 <div class="w-6 h-6 rounded-full bg-surface-container-low text-primary flex items-center justify-center active:scale-90 transition-transform group-hover:bg-primary group-hover:text-white">
@@ -161,8 +161,8 @@ function updateGrid() {
             </div>
             <div class="flex flex-col gap-1 justify-between flex-grow">
                 <div>
-                    <h4 class="font-label font-bold text-sm line-clamp-1 text-primary">${p.name}</h4>
-                    <p class="text-[10px] text-on-surface-variant line-clamp-1 mt-0.5 italic">${p.description}</p>
+                    <h4 class="font-label font-bold text-[13px] md:text-sm line-clamp-1 text-primary">${p.name}</h4>
+                    <p class="text-[9px] md:text-[10px] text-on-surface-variant line-clamp-1 mt-0.5 italic">${p.description}</p>
                 </div>
                 <div class="flex items-center justify-between mt-2">
                     <span class="font-headline font-extrabold text-lg text-primary">₦${p.price.toLocaleString()}</span>
