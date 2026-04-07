@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "restaurant_id": 3,
+    "name": "Truffle Burger",
+    "description": "Medium Rare • No Onions",
+    "price": 18.5,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAieT-X610hOaYW4PgkOhBphAfXdoNoFkb77oZknC_oWLiEaZ3GT32lDPNCVMwPlSIyYriO_GpGAcP_Nce94dj53XiNA9-ZsFk52wcmehMfGHcSrE_LqXDx5whJ7wK61R8hrN_dcV_zZNWu1nYjzPR09OusIMamiykNpRKzF2FHh8tzAkiqDksVCCAB-P0FpJrCQ4IMFLCQMOVG9o4nDplTCAZ2vwyokrFx1RstGeSzBkfAMXJ4zVOpCoJ1ebSFsHNIUvnxqywDSes"
+  },
+  {
+    "id": 2,
+    "restaurant_id": 3,
+    "name": "Parmesan Fries",
+    "description": "With Garlic Aioli Dip",
+    "price": 7.0,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBVWLCF0O9yEL7pV4A-Su-5_SZn_LLdPTzKXg2zq5tyThMUHS379hvTQMZkY6iVqjd51OeeBB_X3YhXxStM3m7skPFoNn1VmGE81ja1nyljYaHe9aqrGCLsY696D9n54yLxQ06N4pv904r5kODkKm_NIYdyNUffg0hLCaQZAgndaZGQu5OM-bA1ZkY-eJagl9iYzvOr_EUq4I-u-U8lszLQUqC-JnMwooAqw5QyRLnYhhpF6iEBl8am7plG_lYCAeXAN-oZZnuMB4E"
+  },
+  {
+    "id": 3,
+    "restaurant_id": 3,
+    "name": "Craft Cola",
+    "description": "Classic Botanical Brew",
+    "price": 4.5,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBXbqcVlbftIdMvbu6QymXtQ3unCvzdy_cy1IvxBulSYCdFrsyVnU_376tbKMeGT_4vwpG-7bUZRtiyKptnbzi-OZc2Hm7JLd7WcWvkRWmHA-HNOcBhO2_ggKFCTNfd_tf_0GWRO0lqkodAbH_ns8S_F_6o_rszWZ5D38NCL5ec94opnHA_jWm8ugDLW5Zat7S6GkD5g7O9GXJH8rneunSq0iU_ht3lb9zYWWgLr7C2S-KOMQxt4og4HbZtJVW1u7fj3d6NYig_zhU"
+  },
+  {
+    "id": 4,
+    "restaurant_id": 1,
+    "name": "Dragon Roll",
+    "description": "Tempura Shrimp • Avocado • Unagi Sauce",
+    "price": 16.5,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuC-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8",
+    "category": "Sushi"
+  },
+  {
+    "id": 5,
+    "restaurant_id": 1,
+    "name": "Salmon Nigiri Set",
+    "description": "6 Pieces • Fresh Atlantic Salmon",
+    "price": 22.0,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7",
+    "category": "Sushi"
+  },
+  {
+    "id": 6,
+    "restaurant_id": 2,
+    "name": "Margherita Classica",
+    "description": "San Marzano • Buffalo Mozzarella",
+    "price": 14.5,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuE-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6",
+    "category": "Pizza"
+  },
+  {
+    "id": 7,
+    "restaurant_id": 2,
+    "name": "Truffle Mushroom Pizza",
+    "description": "Wild Mushrooms • Truffle Oil • Fontina",
+    "price": 19.0,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuF-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5",
+    "category": "Pizza"
+  },
+  {
+    "id": 8,
+    "restaurant_id": 4,
+    "name": "Quinoa Power Bowl",
+    "description": "Avocado • Sweet Potato • Tahini Dressing",
+    "price": 15.0,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuG-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4",
+    "category": "Healthy"
+  },
+  {
+    "id": 9,
+    "restaurant_id": 4,
+    "name": "Avocado Toast",
+    "description": "Sourdough • Poached Egg • Chili Flakes",
+    "price": 12.5,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuH-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3",
+    "category": "Healthy"
+  },
+  {
+    "id": 10,
+    "restaurant_id": 5,
+    "name": "Fresh Ginger Ale",
+    "description": "Cold Pressed Ginger • Lime • Agave",
+    "price": 6.5,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuI-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2",
+    "category": "Drinks"
+  },
+  {
+    "id": 11,
+    "restaurant_id": 5,
+    "name": "Berry Smoothie",
+    "description": "Mixed Berries • Greek Yogurt • Honey",
+    "price": 8.0,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuJ-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1",
+    "category": "Drinks"
+  },
+  {
+    "id": 12,
+    "restaurant_id": 6,
+    "name": "Matcha Lava Cake",
+    "description": "Dark Chocolate • Premium Matcha",
+    "price": 11.0,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuK-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0",
+    "category": "Desserts"
+  },
+  {
+    "id": 13,
+    "restaurant_id": 6,
+    "name": "Classic Tiramisu",
+    "description": "Espresso • Mascarpone • Cocoa",
+    "price": 9.5,
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuL-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9",
+    "category": "Desserts"
+  }
+]

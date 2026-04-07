@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#75777e",
+                    "primary-container": "#1a2b48",
+                    "surface-container-high": "#e9e7ea",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#44474d",
+                    "background": "#fbf9fb",
+                    "on-tertiary-fixed": "#281900",
+                    "secondary-container": "#dde2f3",
+                    "on-secondary-fixed-variant": "#414754",
+                    "on-secondary-fixed": "#161c27",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f5f3f6",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#b6c7eb",
+                    "primary-fixed-dim": "#b6c7eb",
+                    "secondary": "#585e6c",
+                    "on-secondary-container": "#5e6472",
+                    "inverse-on-surface": "#f2f0f3",
+                    "on-surface": "#1b1b1e",
+                    "tertiary-fixed": "#ffdead",
+                    "outline-variant": "#c5c6ce",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#4e5f7e",
+                    "primary": "#031632",
+                    "on-primary-container": "#8293b5",
+                    "tertiary": "#211400",
+                    "surface-dim": "#dbd9dc",
+                    "on-tertiary-container": "#ad8d5b",
+                    "surface-bright": "#fbf9fb",
+                    "on-tertiary-fixed-variant": "#5b4217",
+                    "tertiary-fixed-dim": "#e5c18a",
+                    "on-primary-fixed-variant": "#374765",
+                    "surface": "#fbf9fb",
+                    "on-background": "#1b1b1e",
+                    "surface-container-highest": "#e4e2e5",
+                    "surface-container": "#efedf0",
+                    "tertiary-container": "#3c2700",
+                    "secondary-fixed-dim": "#c1c6d6",
+                    "primary-fixed": "#d7e2ff",
+                    "secondary-fixed": "#dde2f3",
+                    "surface-variant": "#e4e2e5",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#081b38",
+                    "inverse-surface": "#303033",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soulful-gradient {
+            background: linear-gradient(135deg, #031632 0%, #1a2b48 100%);
+        }
+        .no-line-philosophy { border: none !important; }
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen pb-48">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-white/85 backdrop-blur-xl shadow-sm no-line-philosophy flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 transition-opacity hover:opacity-70">
+<span class="material-symbols-outlined text-slate-900" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-xl font-extrabold font-headline tracking-tight text-slate-900">The Burger Atelier</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 transition-opacity hover:opacity-70">
+<span class="material-symbols-outlined text-slate-900" data-icon="info">info</span>
+</button>
+</div>
+</header>
+<main class="px-6 pt-8 max-w-2xl mx-auto">
+<!-- Section Header -->
+<div class="mb-8">
+<h2 class="text-3xl font-headline font-bold text-primary mb-2">Your Basket</h2>
+<p class="text-on-surface-variant text-sm">3 items from The Burger Atelier</p>
+</div>
+<!-- Cart Items List -->
+<div class="space-y-6">
+<!-- Product Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-DEFAULT flex gap-5 items-center transition-all duration-300">
+<div class="w-24 h-24 bg-surface-container-low rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Gourmet truffle burger with melted cheese and arugula on a brioche bun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAieT-X610hOaYW4PgkOhBphAfXdoNoFkb77oZknC_oWLiEaZ3GT32lDPNCVMwPlSIyYriO_GpGAcP_Nce94dj53XiNA9-ZsFk52wcmehMfGHcSrE_LqXDx5whJ7wK61R8hrN_dcV_zZNWu1nYjzPR09OusIMamiykNpRKzF2FHh8tzAkiqDksVCCAB-P0FpJrCQ4IMFLCQMOVG9o4nDplTCAZ2vwyokrFx1RstGeSzBkfAMXJ4zVOpCoJ1ebSFsHNIUvnxqywDSes"/>
+</div>
+<div class="flex-grow flex flex-col justify-between h-24 py-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-lg text-primary">Truffle Burger</h3>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Medium Rare • No Onions</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-headline font-bold text-xl">$18.50</span>
+<div class="bg-surface-container-high rounded-full flex items-center p-1 px-2 gap-4">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-lowest active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="font-bold text-sm">1</span>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-lowest active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-DEFAULT flex gap-5 items-center transition-all duration-300">
+<div class="w-24 h-24 bg-surface-container-low rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Crispy golden fries topped with grated parmesan cheese and herbs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVWLCF0O9yEL7pV4A-Su-5_SZn_LLdPTzKXg2zq5tyThMUHS379hvTQMZkY6iVqjd51OeeBB_X3YhXxStM3m7skPFoNn1VmGE81ja1nyljYaHe9aqrGCLsY696D9n54yLxQ06N4pv904r5kODkKm_NIYdyNUffg0hLCaQZAgndaZGQu5OM-bA1ZkY-eJagl9iYzvOr_EUq4I-u-U8lszLQUqC-JnMwooAqw5QyRLnYhhpF6iEBl8am7plG_lYCAeXAN-oZZnuMB4E"/>
+</div>
+<div class="flex-grow flex flex-col justify-between h-24 py-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-lg text-primary">Parmesan Fries</h3>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">With Garlic Aioli Dip</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-headline font-bold text-xl">$7.00</span>
+<div class="bg-surface-container-high rounded-full flex items-center p-1 px-2 gap-4">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-lowest active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="font-bold text-sm">1</span>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-lowest active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Item 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-DEFAULT flex gap-5 items-center transition-all duration-300">
+<div class="w-24 h-24 bg-surface-container-low rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Glass bottle of premium craft cola with condensation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXbqcVlbftIdMvbu6QymXtQ3unCvzdy_cy1IvxBulSYCdFrsyVnU_376tbKMeGT_4vwpG-7bUZRtiyKptnbzi-OZc2Hm7JLd7WcWvkRWmHA-HNOcBhO2_ggKFCTNfd_tf_0GWRO0lqkodAbH_ns8S_F_6o_rszWZ5D38NCL5ec94opnHA_jWm8ugDLW5Zat7S6GkD5g7O9GXJH8rneunSq0iU_ht3lb9zYWWgLr7C2S-KOMQxt4og4HbZtJVW1u7fj3d6NYig_zhU"/>
+</div>
+<div class="flex-grow flex flex-col justify-between h-24 py-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-lg text-primary">Craft Cola</h3>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Classic Botanical Brew</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-headline font-bold text-xl">$4.50</span>
+<div class="bg-surface-container-high rounded-full flex items-center p-1 px-2 gap-4">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-lowest active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="font-bold text-sm">1</span>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-lowest active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Promo Code -->
+<div class="mt-8">
+<div class="bg-surface-container p-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="sell">sell</span>
+<span class="font-medium text-sm text-on-surface-variant">Add a promo code</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</main>
+<!-- Footer Order Summary & Checkout -->
+<section class="fixed bottom-24 left-0 w-full px-6 z-40">
+<div class="max-w-2xl mx-auto bg-white/95 backdrop-blur-xl p-6 rounded-t-lg shadow-[0_-12px_32px_rgba(0,0,0,0.06)] no-line-philosophy">
+<div class="space-y-3 mb-6">
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span class="font-semibold text-on-surface">$30.00</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Delivery Fee</span>
+<span class="font-semibold text-on-surface">$2.49</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant">
+<span>Service Fee</span>
+<span class="font-semibold text-on-surface">$1.50</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-surface-container-high">
+<span class="font-headline font-bold text-lg text-primary">Total</span>
+<span class="font-headline font-bold text-2xl text-primary">$33.99</span>
+</div>
+</div>
+<button class="soulful-gradient w-full py-4 rounded-full text-white font-label font-semibold text-sm uppercase tracking-widest active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+                Checkout
+                <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/85 backdrop-blur-xl shadow-[0_-12px_32px_rgba(0,0,0,0.04)] rounded-t-3xl flex justify-around items-center px-4 pt-3 pb-8 no-line-philosophy">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Home</span>
+</a>
+<!-- Categories -->
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Search</span>
+</a>
+<!-- Cart (Active) -->
+<a class="flex flex-col items-center justify-center text-slate-900 scale-110 transition-all duration-300 relative" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_basket" style="font-variation-settings: 'FILL' 1;">shopping_basket</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Basket</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Orders</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

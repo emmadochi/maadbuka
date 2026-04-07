@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MaadBuka | Gourmet Food Delivery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "primary": "#C21818",
+                        "on-surface-variant": "#455A64",
+                        "background": "#fbf9fb",
+                        "on-surface": "#121212",
+                        "surface-container-high": "#e9e7ea",
+                        "surface-container-low": "#f5f3f6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#FFF9C4",
+                },
+                "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                },
+                "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                }
+              },
+            },
+          }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/20">
+    <!-- TopAppBar -->
+    <!-- TopAppBar -->
+    <header class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-surface-container-high transition-all duration-300">
+        <div class="flex items-center justify-between px-6 py-4 w-full max-w-7xl mx-auto gap-4 md:gap-12">
+            <!-- Left: Logo & Menu Trigger -->
+            <div class="flex items-center gap-6">
+                <button onclick="toggleMenu()" class="text-slate-900 active:scale-95 duration-200 md:hidden flex items-center">
+                    <span class="material-symbols-outlined" data-icon="menu">menu</span>
+                </button>
+                <a href="index.html" class="flex items-center shrink-0">
+                    <img src="logo.png" alt="MaadBuka Logo" class="h-10 md:h-12 object-contain hover:opacity-90 transition-opacity">
+                </a>
+            </div>
+
+            <!-- Center: Search Bar (Desktop Focused) -->
+            <div class="hidden md:flex flex-1 justify-center max-w-2xl">
+                <div class="relative w-full group">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant transition-colors group-focus-within:text-primary">
+                        <span class="material-symbols-outlined text-[22px]" data-icon="search">search</span>
+                    </div>
+                    <input id="desktop-search" class="search-input-desktop" placeholder="Search for recipes, cuisines, or ingredients..." type="text"/>
+                </div>
+            </div>
+            
+            <!-- Right: Nav & Actions -->
+            <div class="flex items-center gap-4 lg:gap-8">
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-6 lg:gap-8">
+                    <a href="index.html" class="text-sm font-bold text-primary transition-colors">Home</a>
+                    <a href="shop.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">Shop</a>
+                    <a href="about.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">About Us</a>
+                    <a href="contact.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">Contact</a>
+                </nav>
+
+                <div class="hidden lg:block h-6 w-px bg-slate-100"></div>
+
+                <div class="flex items-center gap-2 md:gap-5">
+                    <!-- Track Order (Hidden on mobile) -->
+                    <a href="track.html" class="hidden lg:flex items-center gap-2 text-[10px] font-bold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+                        <span class="hidden 2xl:inline">Order Status</span>
+                    </a>
+
+                    <a href="basket.html" class="text-slate-900 hover:text-primary active:scale-95 duration-200 relative p-2.5 rounded-full hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                        <span class="material-symbols-outlined font-bold" data-icon="shopping_basket">shopping_basket</span>
+                        <span id="basket-badge" class="absolute top-0 right-0 bg-primary text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-sm hidden">0</span>
+                    </a>
+
+                    <a href="profile.html" class="text-slate-900 hover:text-primary active:scale-95 duration-200 p-2.5 rounded-full hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Integrated Search Bar (Mobile only) -->
+        <div class="px-6 pb-4 md:hidden">
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant">
+                    <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                </div>
+                <input id="mobile-search" class="w-full bg-surface-container-high border-none rounded-full py-3 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-300" placeholder="Search for restaurants or dishes..." type="text"/>
+            </div>
+        </div>
+    </header>
+
+    <main class="pb-32">
+        <!-- Hero Section (Desktop refined) -->
+        <section class="max-w-7xl mx-auto px-6 py-8">
+            <div class="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] overflow-hidden shadow-2xl group">
+                <img alt="Gourmet Food" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHcenWteqVhwC7VdiSQ4rv2_JuaSsCT-rblxJV6_7Lx6qHCI6egEN1Ywy6wajk6K-ADc91DxDiJmSAosesW2BpCq7faljoq6khnE_K8VaU84_AcgAuOgctC7BRnJJVGbsUiO_HVA8or1uklkUimFcfl6iW-2WMuTc9vlj8Cz8RwgNx4cQ4dCaiUvolApW2gnQCK1E6KBcV_i6WrX4MFj521u68wcGZAdAZxTlGL6SerTaYkxDbetVPd-0-a98e2GWaxmhzu_lbdqA"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-16">
+                    <div class="max-w-2xl animate-in fade-in slide-in-from-bottom-10 duration-700">
+                        <p class="font-headline font-bold text-white/90 text-sm tracking-[0.3em] uppercase mb-4 drop-shadow-md">Exclusive Gourmet Experiences</p>
+                        <h2 class="font-headline font-extrabold text-white text-4xl md:text-6xl lg:text-7xl leading-[1.1] mb-8 drop-shadow-lg">Elevate Your Palate Today.</h2>
+                        <div class="flex gap-4">
+                            <a href="shop.html" class="btn-primary flex items-center gap-2">
+                                Explorer Selection
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
+                            <button class="btn-secondary !border-white !text-white hover:!bg-white/10 hidden sm:flex">
+                                View Menu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="max-w-7xl mx-auto px-6 py-12 reveal-on-scroll">
+            <div class="text-center mb-10">
+                <h3 class="font-headline font-extrabold text-3xl tracking-tight text-primary">Explore Cuisines</h3>
+                <p class="text-on-surface-variant text-sm mt-1">Discover your favorite gourmet category</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+                <!-- Category Items -->
+                <div class="flex flex-col items-center gap-3 group transition-transform hover:-translate-y-1 cursor-pointer">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-white shadow-lg border border-surface-container-high flex items-center justify-center group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300">
+                        <span class="material-symbols-outlined text-primary text-3xl md:text-4xl">lunch_dining</span>
+                    </div>
+                    <span class="text-xs md:text-sm font-bold text-on-surface-variant uppercase tracking-widest group-hover:text-primary transition-colors">Burger</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3 group transition-transform hover:-translate-y-1 cursor-pointer">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-white shadow-lg border border-surface-container-high flex items-center justify-center group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300">
+                        <span class="material-symbols-outlined text-primary text-3xl md:text-4xl">set_meal</span>
+                    </div>
+                    <span class="text-xs md:text-sm font-bold text-on-surface-variant uppercase tracking-widest group-hover:text-primary transition-colors">Sushi</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3 group transition-transform hover:-translate-y-1 cursor-pointer">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-white shadow-lg border border-surface-container-high flex items-center justify-center group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300">
+                        <span class="material-symbols-outlined text-primary text-3xl md:text-4xl">local_pizza</span>
+                    </div>
+                    <span class="text-xs md:text-sm font-bold text-on-surface-variant uppercase tracking-widest group-hover:text-primary transition-colors">Pizza</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3 group transition-transform hover:-translate-y-1 cursor-pointer">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-white shadow-lg border border-surface-container-high flex items-center justify-center group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300">
+                        <span class="material-symbols-outlined text-primary text-3xl md:text-4xl">eco</span>
+                    </div>
+                    <span class="text-xs md:text-sm font-bold text-on-surface-variant uppercase tracking-widest group-hover:text-primary transition-colors">Healthy</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3 group transition-transform hover:-translate-y-1 cursor-pointer lg:flex hidden">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-white shadow-lg border border-surface-container-high flex items-center justify-center group-hover:bg-primary/5 group-hover:border-primary/20 transition-all duration-300">
+                        <span class="material-symbols-outlined text-primary text-3xl md:text-4xl">local_bar</span>
+                    </div>
+                    <span class="text-xs md:text-sm font-bold text-on-surface-variant uppercase tracking-widest group-hover:text-primary transition-colors">Drinks</span>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-12">
+                <a href="shop.html" class="btn-secondary !py-2.5 !px-8 text-xs uppercase tracking-widest font-bold">View All Cuisines</a>
+            </div>
+        </section>
+
+        <!-- Featured Meals Grid -->
+        <!-- Featured Meals Grid (Responsive columns) -->
+        <section class="max-w-7xl mx-auto px-6 py-12 bg-white rounded-3xl my-8 shadow-sm border border-surface-container-high">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h3 class="font-headline font-bold text-2xl md:text-3xl tracking-tight text-primary">Chef's Recommendations</h3>
+                    <p class="text-on-surface-variant text-sm mt-1">Our most popular seasonal dishes.</p>
+                </div>
+                <a href="shop.html" class="btn-secondary !py-2 !px-4 text-xs">Explore All</a>
+            </div>
+            <div id="featured-meals-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Dynamic Content Loads Here -->
+                <div class="col-span-full py-20 flex flex-col items-center justify-center text-on-surface-variant">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                    <p class="mt-4 text-sm font-medium">Curating gourmet excellence...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Testimonials Section -->
+    <section class="max-w-7xl mx-auto px-6 py-24 reveal-on-scroll">
+        <div class="text-center mb-16">
+            <h3 class="font-headline font-extrabold text-4xl md:text-5xl text-primary mb-4">Loved by Connoisseurs</h3>
+            <p class="text-on-surface-variant font-medium max-w-2xl mx-auto text-lg">Don't just take our word for it—join the thousands of gourmet members who experience culinary perfection every day.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-surface-container-high relative group hover:-translate-y-2 transition-all duration-300">
+                <div class="flex gap-1 text-primary mb-6">
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                </div>
+                <p class="text-slate-700 italic leading-relaxed mb-8 text-lg">"The Truffle Burger arrived exactly as if I were sitting in a 5-star restaurant. The attention to temperature and presentation is unparalleled in the delivery world."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+                        <img src="https://i.pravatar.cc/100?u=1" alt="Diner" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">James Montgomery</h4>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-primary">Gold Member • London</p>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined absolute top-8 right-8 text-primary/5 text-6xl">format_quote</span>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-surface-container-high relative group hover:-translate-y-2 transition-all duration-300 md:translate-y-6">
+                <div class="flex gap-1 text-primary mb-6">
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                </div>
+                <p class="text-slate-700 italic leading-relaxed mb-8 text-lg">"Finally, a service that understands gourmet sushi. The fish was incredibly fresh and the assembly was artistic. MaadBuka has redefined home dining for us."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+                        <img src="https://i.pravatar.cc/100?u=2" alt="Diner" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">Eleanor Vance</h4>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-primary">Epicurean Tier • New York</p>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined absolute top-8 right-8 text-primary/5 text-6xl">format_quote</span>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-surface-container-high relative group hover:-translate-y-2 transition-all duration-300">
+                <div class="flex gap-1 text-primary mb-6">
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                    <span class="material-symbols-outlined material-symbols-fill text-lg">star</span>
+                </div>
+                <p class="text-slate-700 italic leading-relaxed mb-8 text-lg">"The curated wine pairings are a stroke of genius. It's not just a meal; it's a complete culinary experience delivered with impeccable precision."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+                        <img src="https://i.pravatar.cc/100?u=3" alt="Diner" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">Robert Chen</h4>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-primary">Gourmet Regular • Paris</p>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined absolute top-8 right-8 text-primary/5 text-6xl">format_quote</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prominent Newsletter Section -->
+    <section class="max-w-7xl mx-auto px-6 py-24 reveal-on-scroll">
+        <div class="relative rounded-[4rem] overflow-hidden bg-primary px-8 py-20 text-center shadow-2xl">
+            <!-- Abstract background elements -->
+            <div class="absolute -top-12 -right-12 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-black/10 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <span class="material-symbols-outlined text-white/80 text-5xl mb-6">workspace_premium</span>
+                <h3 class="font-headline font-extrabold text-4xl md:text-6xl text-white mb-6 tracking-tight">The Inner Circle</h3>
+                <p class="text-white/80 text-lg md:text-xl font-medium mb-12">Join 12,000+ gourmets and receive exclusive early access to seasonal menus, masterclass secrets, and private member events.</p>
+                
+                <form class="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
+                    <input type="email" placeholder="Your elite email address" class="flex-grow bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-white/60 rounded-full px-8 py-5 focus:ring-2 focus:ring-white/50 transition-all outline-none text-lg">
+                    <button type="submit" class="bg-white text-primary px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-slate-100 active:scale-95 transition-all shadow-xl">
+                        Subscribe
+                    </button>
+                </form>
+                
+                <p class="text-white/50 text-xs mt-8 font-medium">By joining, you agree to our elite privacy protocols. No spam, ever.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BottomNavBar (Mobile only) -->
+    <nav class="fixed bottom-0 left-0 w-full flex md:hidden justify-around items-center px-4 pt-3 pb-8 bg-white/85 backdrop-blur-xl z-50 rounded-t-3xl shadow-[0_-12px_32px_rgba(0,0,0,0.08)] border-t border-slate-100">
+        <a class="flex flex-col items-center justify-center text-primary scale-110 transition-all duration-300" href="index.html">
+            <span class="material-symbols-outlined material-symbols-fill">home</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Explore</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="shop.html">
+            <span class="material-symbols-outlined">storefront</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Shop</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300 relative" href="basket.html">
+            <span class="material-symbols-outlined">shopping_basket</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Cart</span>
+            <span id="basket-badge-mobile" class="absolute top-0 right-0 bg-primary text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center hidden">0</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="profile.html">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Professional Footer (Desktop focused) -->
+    <footer class="bg-white border-t border-surface-container-high pt-16 pb-8 px-6 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Section -->
+                <div>
+                    <img src="logo.png" alt="MaadBuka" class="h-10 mb-6 object-contain">
+                    <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                        Experience the finest gourmet meals delivered right to your doorstep. We curate exclusive dining experiences for those who appreciate quality and taste.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-all">
+                            <span class="material-symbols-outlined text-[20px]">public</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-all">
+                            <span class="material-symbols-outlined text-[20px]">thumb_up</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-all">
+                            <span class="material-symbols-outlined text-[20px]">share</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="footer-section-title">Explore</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-primary font-bold">Home</a></li>
+                        <li><a href="shop.html" class="footer-link">Shop All</a></li>
+                        <li><a href="shop.html" class="footer-link">Trending Now</a></li>
+                        <li><a href="about.html" class="footer-link">Our Story</a></li>
+                        <li><a href="shop.html" class="footer-link">Gourmet Selections</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="footer-section-title">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                        <li><a href="track.html" class="footer-link">Track Your Order</a></li>
+                        <li><a href="#" class="footer-link">FAQ & Help</a></li>
+                        <li><a href="refund.html" class="footer-link">Refund Policy</a></li>
+                        <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="footer-section-title">Join Our Newsletter</h4>
+                    <p class="text-on-surface-variant text-sm mb-4">Get updates on new seasonal menus and exclusive member promotions.</p>
+                    <div class="relative">
+                        <input type="email" placeholder="Your email address" class="w-full bg-surface-container-low border-none rounded-full py-3 px-6 text-sm focus:ring-2 focus:ring-primary/20 transition-all">
+                        <button class="absolute right-1 top-1 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:brightness-110 active:scale-95 transition-all shadow-sm">
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="pt-8 border-t border-surface-container-high flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[12px] text-on-surface-variant font-medium">
+                    &copy; 2026 MaadBuka Gourmet Food Delivery. All rights reserved.
+                </p>
+                <div class="flex gap-6">
+                    <a href="terms.html" class="text-[12px] text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="text-[12px] text-on-surface-variant hover:text-primary transition-colors">Terms of Service</a>
+                    <a href="#" class="text-[12px] text-on-surface-variant hover:text-primary transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data-service.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

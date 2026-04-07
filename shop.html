@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Shop | MaadBuka</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "primary": "#C21818",
+                        "on-surface-variant": "#455A64",
+                        "background": "#fbf9fb",
+                        "on-surface": "#121212",
+                        "surface-container-high": "#e9e7ea",
+                        "surface-container-low": "#f5f3f6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#FFF9C4",
+                },
+                "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                },
+                "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                }
+              },
+            },
+          }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/20">
+    <!-- TopAppBar -->
+    <header class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-surface-container-high transition-all duration-300">
+        <div class="flex items-center justify-between px-6 py-4 w-full max-w-7xl mx-auto gap-4 md:gap-12">
+            <!-- Left: Logo & Menu Trigger -->
+            <div class="flex items-center gap-6">
+                <!-- Mobile: Back Button & Hamburger -->
+                <div class="flex items-center gap-3 md:hidden">
+                    <a href="index.html" class="active:scale-95 duration-200">
+                        <span class="material-symbols-outlined text-slate-900" data-icon="arrow_back">arrow_back</span>
+                    </a>
+                    <button onclick="toggleMenu()" class="text-slate-900 active:scale-95 duration-200">
+                        <span class="material-symbols-outlined text-slate-800">menu</span>
+                    </button>
+                </div>
+                <a href="index.html" class="flex items-center shrink-0">
+                    <img src="logo.png" alt="MaadBuka Logo" class="h-10 md:h-12 object-contain hover:opacity-90 transition-opacity">
+                </a>
+            </div>
+
+            <!-- Center: Search Bar (Desktop Focused) -->
+            <div class="hidden md:flex flex-1 justify-center max-w-2xl">
+                <div class="relative w-full group">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant transition-colors group-focus-within:text-primary">
+                        <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                    </div>
+                    <input id="desktop-search" class="search-input-desktop" placeholder="Search for gourmet dishes..." type="text"/>
+                </div>
+            </div>
+            
+            <!-- Right: Nav & Actions -->
+            <div class="flex items-center gap-4 lg:gap-8">
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-6 lg:gap-8">
+                    <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">Home</a>
+                    <a href="shop.html" class="text-sm font-bold text-primary transition-colors">Shop</a>
+                    <a href="about.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">About Us</a>
+                    <a href="contact.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">Contact</a>
+                </nav>
+
+                <div class="hidden lg:block h-6 w-px bg-slate-100"></div>
+
+                <div class="flex items-center gap-2 md:gap-5">
+                    <!-- Track Order (Hidden on mobile) -->
+                    <a href="track.html" class="hidden lg:flex items-center gap-2 text-[10px] font-bold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+                        <span class="hidden 2xl:inline">Order Status</span>
+                    </a>
+
+                    <a href="basket.html" class="text-slate-900 hover:text-primary active:scale-95 duration-200 relative p-2.5 rounded-full hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                        <span class="material-symbols-outlined font-bold" data-icon="shopping_basket">shopping_basket</span>
+                        <span id="basket-badge" class="absolute top-0 right-0 bg-primary text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-sm hidden">0</span>
+                    </a>
+
+                    <a href="profile.html" class="text-slate-900 hover:text-primary active:scale-95 duration-200 p-2.5 rounded-full hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Search Bar & Mobile Categories (Mobile only) -->
+        <div class="md:hidden">
+            <div class="px-6 pb-4">
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant">
+                        <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                    </div>
+                    <input id="shop-search" class="w-full bg-surface-container-high border-none rounded-full py-3 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-300" placeholder="Search for dishes..." type="text"/>
+                </div>
+            </div>
+            <div class="px-6 pb-4 overflow-x-auto hide-scrollbar flex gap-2" id="category-filters-mobile">
+                <button data-category="All" class="category-chip active px-5 py-2 rounded-full border border-surface-container-high text-xs font-bold transition-all bg-primary text-white">All</button>
+                <button data-category="Burger" class="category-chip px-5 py-2 rounded-full border border-surface-container-high text-xs font-bold transition-all bg-surface-container-lowest text-on-surface-variant">Burger</button>
+                <button data-category="Sushi" class="category-chip px-5 py-2 rounded-full border border-surface-container-high text-xs font-bold transition-all bg-surface-container-lowest text-on-surface-variant">Sushi</button>
+                <button data-category="Pizza" class="category-chip px-5 py-2 rounded-full border border-surface-container-high text-xs font-bold transition-all bg-surface-container-lowest text-on-surface-variant">Pizza</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-8">
+        <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 px-6">
+            <!-- Sidebar Filters (Desktop only) -->
+            <aside class="hidden md:block">
+                <div class="sticky top-28">
+                    <h3 class="font-headline font-bold text-xl mb-6 text-primary flex items-center gap-2">
+                        <span class="material-symbols-outlined">filter_list</span>
+                        Cuisines
+                    </h3>
+                    <nav class="flex flex-col gap-2" id="category-filters">
+                        <div data-category="All" class="sidebar-item active group">
+                            <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">restaurant</span>
+                            <span class="flex-grow">All Selections</span>
+                        </div>
+                        <div data-category="Burger" class="sidebar-item group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">lunch_dining</span>
+                            <span class="flex-grow">Gourmet Burgers</span>
+                        </div>
+                        <div data-category="Sushi" class="sidebar-item group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">set_meal</span>
+                            <span class="flex-grow">Sushi & Rolls</span>
+                        </div>
+                        <div data-category="Pizza" class="sidebar-item group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">local_pizza</span>
+                            <span class="flex-grow">Artisan Pizzas</span>
+                        </div>
+                        <div data-category="Healthy" class="sidebar-item group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">eco</span>
+                            <span class="flex-grow">Healthy & Fresh</span>
+                        </div>
+                        <div data-category="Drinks" class="sidebar-item group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">local_bar</span>
+                            <span class="flex-grow">Signature Drinks</span>
+                        </div>
+                        <div data-category="Desserts" class="sidebar-item group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">icecream</span>
+                            <span class="flex-grow">Premium Desserts</span>
+                        </div>
+                    </nav>
+
+                    <div class="mt-12 p-6 bg-primary/5 rounded-3xl border border-primary/10">
+                        <h4 class="font-bold text-sm mb-2 text-primary">Need Help?</h4>
+                        <p class="text-xs text-on-surface-variant leading-relaxed">Our culinary experts are here to help you choose the perfect meal.</p>
+                        <button class="mt-4 text-xs font-bold text-primary flex items-center gap-2 hover:opacity-80">
+                            <span class="material-symbols-outlined text-sm">support_agent</span>
+                            Live Assistance
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div>
+                <!-- Trending Now Section (Updated for desktop) -->
+                <section class="mb-12">
+                    <h3 class="font-headline font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-orange-500 fill-current animate-pulse">bolt</span>
+                        Trending This Week
+                    </h3>
+                    <div id="trending-grid" class="flex gap-6 overflow-x-auto hide-scrollbar pb-4 -mx-2 px-2">
+                        <!-- Trending items dynamically loaded -->
+                        <div class="animate-pulse bg-surface-container-low min-w-[200px] h-48 rounded-3xl"></div>
+                        <div class="animate-pulse bg-surface-container-low min-w-[200px] h-48 rounded-3xl"></div>
+                        <div class="animate-pulse bg-surface-container-low min-w-[200px] h-48 rounded-3xl"></div>
+                    </div>
+                </section>
+
+                <!-- Continuous Product Grid -->
+                <section>
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-headline font-bold text-2xl tracking-tight" id="main-grid-title">All Selections</h3>
+                        <div class="flex items-center gap-4">
+                            <span class="text-xs font-bold bg-surface-container-high px-4 py-2 rounded-full text-on-surface-variant" id="item-count">0 items</span>
+                            <button class="md:hidden text-primary">
+                                <span class="material-symbols-outlined">tune</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="product-grid" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <!-- Products will be loaded here -->
+                        <div class="col-span-full py-20 flex flex-col items-center justify-center text-on-surface-variant">
+                            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                            <p class="mt-4 text-sm font-medium">Curating your gourmet menu...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- BottomNavBar (Mobile only) -->
+    <nav class="fixed bottom-0 left-0 w-full flex md:hidden justify-around items-center px-4 pt-3 pb-8 bg-white/85 backdrop-blur-xl z-50 rounded-t-3xl shadow-[0_-12px_32px_rgba(0,0,0,0.08)] border-t border-slate-100">
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="index.html">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Explore</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-primary scale-110 transition-all duration-300" href="shop.html">
+            <span class="material-symbols-outlined material-symbols-fill">storefront</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Shop</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300 relative" href="basket.html">
+            <span class="material-symbols-outlined">shopping_basket</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Cart</span>
+            <span id="basket-badge-mobile" class="absolute top-0 right-0 bg-primary text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center hidden">0</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="profile.html">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Footer -->
+    <!-- Footer (Professional Consistent) -->
+    <footer class="bg-white border-t border-surface-container-high pt-16 pb-8 px-6 mt-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <img src="logo.png" alt="MaadBuka Logo" class="h-10 mb-6">
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                        Experience the finest gourmet meals delivered right to your doorstep. We curate exclusive dining experiences for those who appreciate quality and taste.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-headline font-bold text-primary mb-6">Explore</h4>
+                    <ul class="space-y-4 text-sm text-on-surface-variant">
+                        <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="shop.html" class="hover:text-primary transition-colors">Shop All</a></li>
+                        <li><a href="shop.html" class="hover:text-primary transition-colors">Trending Now</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition-colors">Our Story</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-headline font-bold text-primary mb-6">Support</h4>
+                    <ul class="space-y-4 text-sm text-on-surface-variant">
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact Us</a></li>
+                        <li><a href="track.html" class="hover:text-primary transition-colors">Track Your Order</a></li>
+                        <li><a href="refund.html" class="hover:text-primary transition-colors">Refund Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-headline font-bold text-primary mb-6">Join Our Newsletter</h4>
+                    <p class="text-sm text-on-surface-variant mb-6">Get updates on new seasonal menus and exclusive member promotions.</p>
+                    <div class="relative">
+                        <input type="email" placeholder="Your email address" class="w-full bg-slate-100 border-none rounded-full px-4 py-3 text-sm focus:ring-2 focus:ring-primary shadow-inner">
+                        <button class="absolute right-1 top-1 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">&copy; 2026 MaadBuka Gourmet Food Delivery. All Rights Reserved.</p>
+                <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+                    <a href="terms.html" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data-service.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/shop.js"></script>
+</body>
+</html>

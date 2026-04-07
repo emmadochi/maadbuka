@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Your Basket | MaadBuka</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "primary": "#C21818",
+                        "on-surface-variant": "#455A64",
+                        "background": "#fbf9fb",
+                        "on-surface": "#121212",
+                        "surface-container-high": "#e9e7ea",
+                        "surface-container-low": "#f5f3f6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#FFF9C4",
+                },
+                "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                },
+                "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                }
+              },
+            },
+          }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/20 pb-48">
+    <!-- TopAppBar -->
+    <header class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-surface-container-high transition-all duration-300">
+        <div class="flex items-center justify-between px-6 py-4 w-full max-w-7xl mx-auto gap-4 md:gap-12">
+            <!-- Left: Logo & Menu Trigger -->
+            <div class="flex items-center gap-6">
+                <!-- Mobile: Back & Menu -->
+                <div class="flex items-center gap-3 md:hidden">
+                    <a href="index.html" class="active:scale-95 duration-200">
+                        <span class="material-symbols-outlined text-slate-900">arrow_back</span>
+                    </a>
+                    <button onclick="toggleMenu()" class="text-slate-900 active:scale-95 duration-200">
+                        <span class="material-symbols-outlined text-slate-800">menu</span>
+                    </button>
+                </div>
+                <a href="index.html" class="flex items-center shrink-0">
+                    <img src="logo.png" alt="MaadBuka Logo" class="h-10 md:h-12 object-contain hover:opacity-90 transition-opacity">
+                </a>
+            </div>
+
+            <!-- Center: Search Bar (Desktop Focused) -->
+            <div class="hidden md:flex flex-1 justify-center max-w-2xl">
+                <div class="relative w-full group">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant transition-colors group-focus-within:text-primary">
+                        <span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                    </div>
+                    <input id="desktop-search" class="search-input-desktop" placeholder="Search for gourmet dishes..." type="text"/>
+                </div>
+            </div>
+            
+            <!-- Right: Nav & Actions -->
+            <div class="flex items-center gap-4 lg:gap-8">
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-6 lg:gap-8">
+                    <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">Home</a>
+                    <a href="shop.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">Shop</a>
+                    <a href="about.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">About Us</a>
+                    <a href="contact.html" class="text-sm font-bold text-slate-600 hover:text-primary transition-colors">Contact</a>
+                </nav>
+
+                <div class="hidden lg:block h-6 w-px bg-slate-100"></div>
+
+                <div class="flex items-center gap-2 md:gap-5">
+                    <!-- Track Order (Hidden on mobile) -->
+                    <a href="track.html" class="hidden lg:flex items-center gap-2 text-[10px] font-bold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest">
+                        <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+                        <span class="hidden 2xl:inline">Order Status</span>
+                    </a>
+
+                    <a href="basket.html" class="text-primary active:scale-95 duration-200 relative p-2.5 rounded-full bg-primary/10 transition-all border border-primary/20">
+                        <span class="material-symbols-outlined font-bold material-symbols-fill" data-icon="shopping_basket">shopping_basket</span>
+                        <span id="basket-badge" class="absolute top-0 right-0 bg-primary text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-sm hidden">0</span>
+                    </a>
+
+                    <a href="profile.html" class="text-slate-900 hover:text-primary active:scale-95 duration-200 p-2.5 rounded-full hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-12 px-6 pb-48">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12">
+            <!-- Left Side: Items -->
+            <div>
+                <div class="mb-8">
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold text-primary mb-2">Your Culinary Selection</h2>
+                    <p class="text-on-surface-variant text-sm">Review your gourmet items before checkout.</p>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="basket-items-list" class="space-y-6">
+                    <!-- Dynamic Content Loads Here -->
+                    <div class="py-20 flex justify-center">
+                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                    </div>
+                </div>
+
+                <!-- Promo Code -->
+                <div class="mt-8 max-w-md">
+                    <div class="bg-surface-container-high p-4 rounded-3xl flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform hover:bg-surface-container-high group">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">sell</span>
+                            <span class="font-bold text-sm text-on-surface-variant">Apply a promotion code</span>
+                        </div>
+                        <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Summary (Desktop fixed) -->
+            <div class="relative">
+                <section id="basket-summary" class="hidden lg:block sticky top-28">
+                    <div class="bg-white border border-surface-container-high p-8 rounded-[2.5rem] shadow-xl">
+                        <h3 class="font-headline font-bold text-xl mb-6 text-primary">Order Summary</h3>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between text-sm text-on-surface-variant">
+                                <span>Subtotal</span>
+                                <span id="basket-subtotal" class="font-bold text-on-surface">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm text-on-surface-variant">
+                                <span>Gourmet Delivery</span>
+                                <span class="font-bold text-on-surface">$2.49</span>
+                            </div>
+                            <div class="flex justify-between text-sm text-on-surface-variant">
+                                <span>Service Fee</span>
+                                <span class="font-bold text-on-surface">$1.50</span>
+                            </div>
+                            <div class="pt-4 border-t border-surface-container-high flex justify-between items-center">
+                                <span class="font-headline font-bold text-lg text-primary">Total Amount</span>
+                                <span id="basket-total" class="font-headline font-bold text-3xl text-primary">$0.00</span>
+                            </div>
+                        </div>
+
+                        <button class="btn-primary w-full py-4 !text-sm !tracking-widest flex items-center justify-center gap-3">
+                            Proceed to Checkout
+                            <span class="material-symbols-outlined">payments</span>
+                        </button>
+                        
+                        <div class="mt-8 p-4 bg-surface-container-low rounded-2xl flex items-center gap-4">
+                            <span class="material-symbols-outlined text-primary">verified_user</span>
+                            <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Secure Payment & Gourmet Quality Guaranteed</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mobile Only Summary (Floating) -->
+                <section id="basket-summary-mobile" class="fixed bottom-24 left-0 w-full px-6 z-40 lg:hidden hidden">
+                    <div class="max-w-xl mx-auto bg-white/95 backdrop-blur-xl p-6 rounded-3xl shadow-[0_-12px_32px_rgba(0,0,0,0.12)] border border-surface-container-high">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="font-headline font-bold text-primary">Total Amount</span>
+                            <span id="basket-total-mobile" class="font-headline font-bold text-2xl text-primary">$0.00</span>
+                        </div>
+                        <button class="soulful-gradient w-full py-4 rounded-full text-white font-label font-bold text-sm uppercase tracking-widest active:scale-[0.98] transition-transform flex items-center justify-center gap-2 shadow-lg">
+                            Checkout Now
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- BottomNavBar (Mobile only) -->
+    <nav class="fixed bottom-0 left-0 w-full flex md:hidden justify-around items-center px-4 pt-3 pb-8 bg-white/85 backdrop-blur-xl z-50 rounded-t-3xl shadow-[0_-12px_32px_rgba(0,0,0,0.08)] border-t border-slate-100">
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="index.html">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Explore</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="shop.html">
+            <span class="material-symbols-outlined">storefront</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Shop</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-primary scale-110 transition-all duration-300 relative" href="basket.html">
+            <span class="material-symbols-outlined material-symbols-fill">shopping_basket</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Basket</span>
+            <span id="basket-badge-mobile" class="absolute top-0 right-0 bg-primary text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center hidden">0</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-slate-400 hover:text-slate-600 transition-all duration-300" href="profile.html">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Footer (Professional Consistent) -->
+    <footer class="bg-white border-t border-surface-container-high pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <img src="logo.png" alt="MaadBuka Logo" class="h-10 mb-6">
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                        Experience the finest gourmet meals delivered right to your doorstep. We curate exclusive dining experiences for those who appreciate quality and taste.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-headline font-bold text-primary mb-6">Explore</h4>
+                    <ul class="space-y-4 text-sm text-on-surface-variant">
+                        <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="shop.html" class="hover:text-primary transition-colors">Shop All</a></li>
+                        <li><a href="shop.html" class="hover:text-primary transition-colors">Trending Now</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition-colors">Our Story</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-headline font-bold text-primary mb-6">Support</h4>
+                    <ul class="space-y-4 text-sm text-on-surface-variant">
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact Us</a></li>
+                        <li><a href="track.html" class="hover:text-primary transition-colors">Track Your Order</a></li>
+                        <li><a href="refund.html" class="hover:text-primary transition-colors">Refund Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-headline font-bold text-primary mb-6">Join Our Newsletter</h4>
+                    <p class="text-sm text-on-surface-variant mb-6">Get updates on new seasonal menus and exclusive member promotions.</p>
+                    <div class="relative">
+                        <input type="email" placeholder="Your email address" class="w-full bg-slate-100 border-none rounded-full px-4 py-3 text-sm focus:ring-2 focus:ring-primary shadow-inner">
+                        <button class="absolute right-1 top-1 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">&copy; 2026 MaadBuka Gourmet Food Delivery. All Rights Reserved.</p>
+                <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+                    <a href="terms.html" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data-service.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Trigger basket initialization specifically for this page
+        document.addEventListener('DOMContentLoaded', () => {
+            initBasketPage();
+        });
+    </script>
+</body>
+</html>

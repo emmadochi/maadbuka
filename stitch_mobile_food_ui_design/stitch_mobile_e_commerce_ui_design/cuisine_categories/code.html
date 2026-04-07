@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#75777e",
+                    "primary-container": "#1a2b48",
+                    "surface-container-high": "#e9e7ea",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#44474d",
+                    "background": "#fbf9fb",
+                    "on-tertiary-fixed": "#281900",
+                    "secondary-container": "#dde2f3",
+                    "on-secondary-fixed-variant": "#414754",
+                    "on-secondary-fixed": "#161c27",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f5f3f6",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#b6c7eb",
+                    "primary-fixed-dim": "#b6c7eb",
+                    "secondary": "#585e6c",
+                    "on-secondary-container": "#5e6472",
+                    "inverse-on-surface": "#f2f0f3",
+                    "on-surface": "#1b1b1e",
+                    "tertiary-fixed": "#ffdead",
+                    "outline-variant": "#c5c6ce",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#4e5f7e",
+                    "primary": "#031632",
+                    "on-primary-container": "#8293b5",
+                    "tertiary": "#211400",
+                    "surface-dim": "#dbd9dc",
+                    "on-tertiary-container": "#ad8d5b",
+                    "surface-bright": "#fbf9fb",
+                    "on-tertiary-fixed-variant": "#5b4217",
+                    "tertiary-fixed-dim": "#e5c18a",
+                    "on-primary-fixed-variant": "#374765",
+                    "surface": "#fbf9fb",
+                    "on-background": "#1b1b1e",
+                    "surface-container-highest": "#e4e2e5",
+                    "surface-container": "#efedf0",
+                    "tertiary-container": "#3c2700",
+                    "secondary-fixed-dim": "#c1c6d6",
+                    "primary-fixed": "#d7e2ff",
+                    "secondary-fixed": "#dde2f3",
+                    "surface-variant": "#e4e2e5",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#081b38",
+                    "inverse-surface": "#303033",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-line-philosophy {
+            border: none !important;
+        }
+        .tonal-layering-only {
+            border: none !important;
+        }
+        .editorial-gradient-overlay {
+            background: linear-gradient(to top, rgba(3, 22, 50, 0.8) 0%, rgba(3, 22, 50, 0) 60%);
+        }
+        .soulful-gradient {
+            background: linear-gradient(135deg, #031632 0%, #1a2b48 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl shadow-sm dark:shadow-none no-line-philosophy">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 hover:opacity-70 transition-opacity text-slate-900">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-xl font-extrabold font-headline tracking-tight text-slate-900">Categories</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 hover:opacity-70 transition-opacity text-slate-900">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="active:scale-95 duration-200 hover:opacity-70 transition-opacity text-slate-900">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</header>
+<main class="px-6 pt-6">
+<!-- Search Bar Section (No-Line Style) -->
+<div class="mb-8">
+<div class="bg-surface-container-high rounded-full px-6 py-4 flex items-center gap-3 transition-all duration-300 focus-within:bg-surface-container-lowest focus-within:ring-2 focus-within:ring-primary/20">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md placeholder:text-on-surface-variant font-medium" placeholder="Search cuisines or restaurants..." type="text"/>
+</div>
+</div>
+<!-- Featured Bento Selection -->
+<section class="grid grid-cols-2 gap-4 mb-6">
+<!-- Large Featured Card -->
+<div class="col-span-2 relative h-64 rounded-lg overflow-hidden group active:scale-[0.98] transition-transform duration-300">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Authentic Italian pasta carbonara served in a rustic bowl on a dark marble table with moody dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS_iS3WCqBlSjvyj1i1afmYFkj3eJnMb37uP9-ss0igHzTeXMpuvugsSQhuum5i4doqSgVZ-MjBe5xZg0-_a98Y8N9Cz1FtGU4nsqsa5Rk5nKY26jn-qwpA8n61UTmxKKO84zBN2QZ-3rsuL1XbEPj12KvtqEgRQan514N1WjR5tciqLWqVnXtG1Xcw_pTiRGbB1HwXQiGZFRZFPoUc4tzoXl1rrnTm5-BJKf6yQErO-HcyX-rE7v2J67aI_wue_b_v6f0NEhhTOU"/>
+<div class="absolute inset-0 editorial-gradient-overlay"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded mb-2 inline-block">Popular Choice</span>
+<h2 class="text-white font-headline text-2xl font-bold">Italian</h2>
+<p class="text-white/80 text-sm font-medium mt-1">Handcrafted pasta &amp; wood-fired pizza</p>
+</div>
+</div>
+<!-- Medium Cards -->
+<div class="relative h-48 rounded-lg overflow-hidden active:scale-[0.98] transition-transform duration-300">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Exquisite Japanese sushi and sashimi platter with fresh salmon and tuna, minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNGor_PHxh__0l7rnkDIS4sLnjmZpc1N98vfktt1whMY-8FONBmjPBLwnoeJSGeKnIZgHvnMqa1RqM_5yMOf_psdrrGI87fC6Fuy1XsiwdUb2ls2ThnWXk_JbNOr17hvv4yzEYxZ6FWgyRz4qvCDKWK3uFu3pPCxxClp0ZFnLYq3EsmqM0I3LFpyMm4rcThYoK8t91gNgFKtNpZnmUmZXzpvFF-2TtMQ9s7qWed_0UiXia1-bWzCnu3ALq0uKOAY5VEPJMAXp8yYM"/>
+<div class="absolute inset-0 editorial-gradient-overlay"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<h2 class="text-white font-headline text-lg font-bold">Japanese</h2>
+</div>
+</div>
+<div class="relative h-48 rounded-lg overflow-hidden active:scale-[0.98] transition-transform duration-300">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Vibrant Mexican street tacos with lime and cilantro on a colorful rustic plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6rm5JtY-0H_PKadxZTpXyKmNwKUlnd2n-IAsf_6VDhD-fYD1Tqs_ca9-7BiNJEd9pRaI7Q7yFlHWdx3MmJbsjZfX3OqkZSMKAn3u5ar7nKtWiqODSlWhe9Kj8_-ps-CnOz58jtce-pSDbUnNksGFg1kjdhUOfsJt9dJPvkZGzJC6vm7E_86BYo8DfyBUaoHMv3lwUpxjK57-QDNSiDhggzG1hODZI0-J2La2uRmbOH9aL0sk50mFG1OffyYeVSx2s2LXztERqjno"/>
+<div class="absolute inset-0 editorial-gradient-overlay"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<h2 class="text-white font-headline text-lg font-bold">Mexican</h2>
+</div>
+</div>
+<!-- Asymmetric Grid Row -->
+<div class="relative h-48 rounded-lg overflow-hidden active:scale-[0.98] transition-transform duration-300">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Fragrant Indian butter chicken curry with garlic naan on a traditional copper platter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ3QZ4NfVB0OlS_F_APrPTj48EYHoN90BWmia-geo6BZy39Mb_A7wuGXDxjRZl7Bnkrr3goUqSUDb73GgJ93OfetW63LmpdHoZqKksxteBx7Pnz1cfZiXPFqfnywSiDASLYg9HA4zAJ9G1qiV7lCvQpDwH0m2-y9K__sQdn86G541110tI_PPEtki0acbmo2Ni8GQa6ulHdOHkjO5lsLd45eQG2jTZqMmZ71sneQDZulDXHhraUD7xqFayoT5O6pU93BvUiWbhkaI"/>
+<div class="absolute inset-0 editorial-gradient-overlay"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<h2 class="text-white font-headline text-lg font-bold">Indian</h2>
+</div>
+</div>
+<div class="relative h-48 rounded-lg overflow-hidden active:scale-[0.98] transition-transform duration-300">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Sophisticated French pastries and macarons in a boutique patisserie setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD78uKgre6Z2wKQaj1_cPw9Vrs_EpJtevP2PIbG8KRf60puoI7MEq1H13P2GQLE6EvfLXdTnn6I6yEigPIF3qaxHEaGItJsXWSWdsRC8dZvyMwIn1qQnO4DioS7yXliANs-VLd4NQJgfCO-HutGUawnmTODcAdTkwJJUvXO3P4WsuKneuIScDX2sWqs4zeWVHnHunW8tFkVXwWXq0sof0ps03swJT84Onq1oS7Vup1yEcuCiDY8Vx3SpBkBiIOXWRshSzJa0XhHmQ8"/>
+<div class="absolute inset-0 editorial-gradient-overlay"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<h2 class="text-white font-headline text-lg font-bold">French</h2>
+</div>
+</div>
+<div class="col-span-2 relative h-40 rounded-lg overflow-hidden active:scale-[0.98] transition-transform duration-300">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Gourmet vegan grain bowl with avocado, roasted vegetables and fresh microgreens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiNdO0Pyh6e8vBylAGwNd4PCWfRui6yT4JMUaB-AS-p4tDMYW81VzRKdE3A3CJEYjbhrlzk6D67v-8s8bhW4y1C0AWSERp2ujCgyVyQmBr4O9TMzJ4kiJsbhY5LwFF9sx1msTm-zpsa9zucZlohX1TWuFvG-IC-qWSpKzBk2Tu_ie9rnTsoyt1I_XItnCXDxMl4uZe4_f3FHCmhwcMxr7AO3aXq9Jv9Tn361bh8nhNmDPqwu9P5WWYkqrf9BAb1S11Jng-1tFKihc"/>
+<div class="absolute inset-0 editorial-gradient-overlay"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h2 class="text-white font-headline text-xl font-bold">Vegan &amp; Plant-Based</h2>
+</div>
+</div>
+</section>
+<!-- Secondary Categories (Tonal Layering) -->
+<section class="mt-10 mb-8">
+<h3 class="text-on-surface font-headline font-bold text-lg mb-4 ml-1">Shop by Preference</h3>
+<div class="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
+<div class="flex-shrink-0 bg-surface-container-low px-6 py-8 rounded-lg w-32 flex flex-col items-center justify-center text-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="restaurant">restaurant</span>
+<span class="text-[10px] font-bold uppercase tracking-wider font-label text-primary">Dine In</span>
+</div>
+<div class="flex-shrink-0 bg-surface-container-low px-6 py-8 rounded-lg w-32 flex flex-col items-center justify-center text-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="diamond">diamond</span>
+<span class="text-[10px] font-bold uppercase tracking-wider font-label text-primary">Fine Dining</span>
+</div>
+<div class="flex-shrink-0 bg-surface-container-low px-6 py-8 rounded-lg w-32 flex flex-col items-center justify-center text-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="bolt">bolt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider font-label text-primary">Fast Delivery</span>
+</div>
+<div class="flex-shrink-0 bg-surface-container-low px-6 py-8 rounded-lg w-32 flex flex-col items-center justify-center text-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-[10px] font-bold uppercase tracking-wider font-label text-primary">New Spots</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-3 pb-8 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl rounded-t-3xl shadow-[0_-12px_32px_rgba(0,0,0,0.04)] z-50 tonal-layering-only">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 hover:text-slate-600 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-900 dark:text-white scale-110 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 hover:text-slate-600 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 hover:text-slate-600 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long">receipt_long</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 hover:text-slate-600 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>
