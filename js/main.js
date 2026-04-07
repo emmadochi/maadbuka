@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initial UI state
     injectProductModal();
     injectNavigationDrawer();
+    injectWhatsAppWidget();
     updateBasketBadge();
 
     // Route-specific logic
@@ -479,4 +480,24 @@ function toggleMenu() {
             document.body.style.overflow = '';
         }, 500);
     }
+}
+/**
+ * Injects the WhatsApp Floating Widget into the DOM
+ */
+function injectWhatsAppWidget() {
+    if (document.getElementById('whatsapp-widget')) return;
+
+    const whatsappNumber = "+2348000000000"; // Placeholder, can be updated later
+    const message = encodeURIComponent("Hello MaadBuka! I'd like to inquire about your gourmet menu.");
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    const widgetHTML = `
+    <a href="${whatsappURL}" id="whatsapp-widget" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">
+        <span class="material-symbols-outlined material-symbols-fill">chat</span>
+    </a>
+    `;
+
+    const div = document.createElement('div');
+    div.innerHTML = widgetHTML.trim();
+    document.body.appendChild(div.firstChild);
 }

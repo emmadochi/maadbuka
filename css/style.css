@@ -253,3 +253,66 @@ nav a:hover::after {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    filter: brightness(1.1);
+}
+
+.whatsapp-float:active {
+    transform: scale(0.9);
+}
+
+.whatsapp-float .material-symbols-outlined {
+    font-size: 32px;
+}
+
+/* Add a subtle pulse for attention */
+.whatsapp-float::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #25D366;
+    opacity: 0.5;
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Mobile adjustments (to clear bottom nav) */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 7rem; /* Higher on mobile to avoid overlapping with bottom bar */
+        width: 54px;
+        height: 54px;
+    }
+    .whatsapp-float .material-symbols-outlined {
+        font-size: 28px;
+    }
+}
