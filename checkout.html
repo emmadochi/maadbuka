@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Checkout | MaadBuka</title>
+    <meta name="description" content="Securely complete your gourmet food order with MaadBuka. Choose from card, bank transfer, USSD, or pay on delivery.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "primary": "#C21818",
+                        "on-surface-variant": "#455A64",
+                        "background": "#fbf9fb",
+                        "on-surface": "#121212",
+                        "surface-container-high": "#e9e7ea",
+                        "surface-container-low": "#f5f3f6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#FFF9C4",
+                },
+                "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                },
+                "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                }
+              },
+            },
+          }
+    </script>
+    <style>
+        .payment-option { transition: all 0.2s ease; cursor: pointer; }
+        .payment-option.selected { border-color: #C21818; background-color: rgba(194,24,24,0.04); }
+        .payment-option.selected .option-dot { background-color: #C21818; border-color: #C21818; }
+        .payment-option.selected .option-dot::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background-color: white; }
+        .option-dot { position: relative; width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ccc; flex-shrink: 0; transition: all 0.2s; }
+        .payment-panel { display: none; }
+        .payment-panel.active { display: block; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .payment-panel.active { animation: slideDown 0.25s ease; }
+        .step-badge { width: 28px; height: 28px; border-radius: 50%; background: #C21818; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex-shrink: 0; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/20 pb-32">
+
+    <!-- TopAppBar -->
+    <header class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-surface-container-high">
+        <div class="flex items-center justify-between px-6 py-4 w-full max-w-7xl mx-auto gap-4">
+            <div class="flex items-center gap-4">
+                <a href="basket.html" class="active:scale-95 duration-200 flex items-center gap-2 text-sm font-bold text-on-surface-variant hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                    <span class="hidden md:inline">Back to Basket</span>
+                </a>
+                <div class="hidden md:block h-6 w-px bg-slate-200"></div>
+                <a href="index.html">
+                    <img src="logo.png" alt="MaadBuka" class="h-9 object-contain">
+                </a>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-on-surface-variant font-bold">
+                <span class="material-symbols-outlined text-primary text-[18px]">lock</span>
+                Secure Checkout
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto py-8 px-4 md:px-6">
+
+        <!-- Page Title -->
+        <div class="mb-8">
+            <h1 class="font-headline font-extrabold text-2xl md:text-3xl text-primary">Complete Your Order</h1>
+            <p class="text-on-surface-variant text-sm mt-1">Fill in your details and choose a payment method.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
+
+            <!-- LEFT: Checkout Form -->
+            <div class="space-y-6">
+
+                <!-- Step 1: Delivery Details -->
+                <div class="bg-white rounded-[2rem] border border-surface-container-high shadow-sm p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="step-badge">1</div>
+                        <h2 class="font-headline font-bold text-lg">Delivery Details</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Full Name</label>
+                            <input id="checkout-name" type="text" placeholder="e.g. Emeka Okafor" class="w-full bg-surface-container-low border border-surface-container-high rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Phone Number</label>
+                            <input id="checkout-phone" type="tel" placeholder="e.g. 08012345678" class="w-full bg-surface-container-low border border-surface-container-high rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Delivery Address</label>
+                            <input id="checkout-address" type="text" placeholder="e.g. 12 Lekki Phase 1, Lagos" class="w-full bg-surface-container-low border border-surface-container-high rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">City</label>
+                            <input id="checkout-city" type="text" placeholder="e.g. Lagos" class="w-full bg-surface-container-low border border-surface-container-high rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">State</label>
+                            <select id="checkout-state" class="w-full bg-surface-container-low border border-surface-container-high rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                                <option value="">Select State</option>
+                                <option>Abia</option><option>Abuja (FCT)</option><option>Adamawa</option><option>Akwa Ibom</option>
+                                <option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option>
+                                <option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option>
+                                <option>Edo</option><option>Ekiti</option><option>Enugu</option><option>Gombe</option>
+                                <option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option>
+                                <option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+                                <option selected>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option>
+                                <option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option>
+                                <option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Delivery Notes (Optional)</label>
+                            <textarea id="checkout-notes" rows="2" placeholder="e.g. Call me when you arrive. Gate code: 1234." class="w-full bg-surface-container-low border border-surface-container-high rounded-2xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all resize-none"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Payment Method -->
+                <div class="bg-white rounded-[2rem] border border-surface-container-high shadow-sm p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="step-badge">2</div>
+                        <h2 class="font-headline font-bold text-lg">Choose Payment Method</h2>
+                    </div>
+
+                    <div class="space-y-3" id="payment-options">
+
+                        <!-- Debit/Credit Card -->
+                        <div class="payment-option selected border-2 border-primary rounded-2xl p-4" onclick="selectPayment('card')" id="option-card">
+                            <div class="flex items-center gap-4">
+                                <div class="option-dot" id="dot-card"></div>
+                                <div class="flex items-center gap-3 flex-grow">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-blue-600 text-[22px]">credit_card</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm">Debit / Credit Card</p>
+                                        <p class="text-[11px] text-on-surface-variant">Visa, Mastercard, Verve</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1.5 items-center">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" class="h-4 object-contain opacity-80" alt="Visa">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" class="h-5 object-contain opacity-80" alt="Mastercard">
+                                </div>
+                            </div>
+                            <!-- Card Panel -->
+                            <div class="payment-panel active mt-5 pt-5 border-t border-surface-container-high" id="panel-card">
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Card Number</label>
+                                        <input id="card-number" type="text" placeholder="0000 0000 0000 0000" maxlength="19" class="w-full bg-surface-container-low border border-surface-container-high rounded-xl px-4 py-3 text-sm font-medium font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Expiry Date</label>
+                                            <input id="card-expiry" type="text" placeholder="MM / YY" maxlength="7" class="w-full bg-surface-container-low border border-surface-container-high rounded-xl px-4 py-3 text-sm font-medium font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">CVV</label>
+                                            <input id="card-cvv" type="password" placeholder="•••" maxlength="4" class="w-full bg-surface-container-low border border-surface-container-high rounded-xl px-4 py-3 text-sm font-medium font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Cardholder Name</label>
+                                        <input id="card-name" type="text" placeholder="Name on card" class="w-full bg-surface-container-low border border-surface-container-high rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bank Transfer -->
+                        <div class="payment-option border-2 border-surface-container-high rounded-2xl p-4" onclick="selectPayment('transfer')" id="option-transfer">
+                            <div class="flex items-center gap-4">
+                                <div class="option-dot" id="dot-transfer"></div>
+                                <div class="flex items-center gap-3 flex-grow">
+                                    <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-green-600 text-[22px]">account_balance</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm">Bank Transfer</p>
+                                        <p class="text-[11px] text-on-surface-variant">Transfer directly to our account</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Transfer Panel -->
+                            <div class="payment-panel mt-5 pt-5 border-t border-surface-container-high" id="panel-transfer">
+                                <div class="bg-green-50 border border-green-100 rounded-2xl p-5 space-y-3">
+                                    <p class="text-xs font-bold text-green-800 uppercase tracking-widest">Transfer Details</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-on-surface-variant">Bank Name</span>
+                                        <span class="text-sm font-bold">Guaranty Trust Bank</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-on-surface-variant">Account Name</span>
+                                        <span class="text-sm font-bold">MaadBuka Ltd</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-on-surface-variant">Account Number</span>
+                                        <button onclick="copyAccountNumber()" class="flex items-center gap-2 text-sm font-bold text-primary hover:underline">
+                                            0123456789
+                                            <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                                        </button>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-on-surface-variant">Amount to Transfer</span>
+                                        <span id="transfer-amount" class="text-sm font-bold text-primary">₦0</span>
+                                    </div>
+                                </div>
+                                <p class="text-[11px] text-on-surface-variant mt-3 leading-relaxed">⚠️ After transfer, your order will be confirmed within 5–15 minutes. Please use your phone number as transfer narration.</p>
+                            </div>
+                        </div>
+
+                        <!-- USSD -->
+                        <div class="payment-option border-2 border-surface-container-high rounded-2xl p-4" onclick="selectPayment('ussd')" id="option-ussd">
+                            <div class="flex items-center gap-4">
+                                <div class="option-dot" id="dot-ussd"></div>
+                                <div class="flex items-center gap-3 flex-grow">
+                                    <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-purple-600 text-[22px]">dialpad</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm">USSD</p>
+                                        <p class="text-[11px] text-on-surface-variant">Pay via your bank's shortcode</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- USSD Panel -->
+                            <div class="payment-panel mt-5 pt-5 border-t border-surface-container-high" id="panel-ussd">
+                                <div class="space-y-3">
+                                    <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Select Your Bank</p>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <button onclick="selectUSSD(this, '*737#')" class="ussd-bank-btn bg-surface-container-low border border-surface-container-high text-sm font-bold rounded-xl px-4 py-3 hover:border-primary hover:text-primary transition-all text-left">
+                                            GTBank · <span class="font-mono">*737#</span>
+                                        </button>
+                                        <button onclick="selectUSSD(this, '*894#')" class="ussd-bank-btn bg-surface-container-low border border-surface-container-high text-sm font-bold rounded-xl px-4 py-3 hover:border-primary hover:text-primary transition-all text-left">
+                                            Access · <span class="font-mono">*901#</span>
+                                        </button>
+                                        <button onclick="selectUSSD(this, '*770#')" class="ussd-bank-btn bg-surface-container-low border border-surface-container-high text-sm font-bold rounded-xl px-4 py-3 hover:border-primary hover:text-primary transition-all text-left">
+                                            Zenith · <span class="font-mono">*966#</span>
+                                        </button>
+                                        <button onclick="selectUSSD(this, '*919#')" class="ussd-bank-btn bg-surface-container-low border border-surface-container-high text-sm font-bold rounded-xl px-4 py-3 hover:border-primary hover:text-primary transition-all text-left">
+                                            UBA · <span class="font-mono">*919#</span>
+                                        </button>
+                                        <button onclick="selectUSSD(this, '*322*030#')" class="ussd-bank-btn bg-surface-container-low border border-surface-container-high text-sm font-bold rounded-xl px-4 py-3 hover:border-primary hover:text-primary transition-all text-left">
+                                            Sterling · <span class="font-mono">*822#</span>
+                                        </button>
+                                        <button onclick="selectUSSD(this, '*389*221#')" class="ussd-bank-btn bg-surface-container-low border border-surface-container-high text-sm font-bold rounded-xl px-4 py-3 hover:border-primary hover:text-primary transition-all text-left">
+                                            Stanbic · <span class="font-mono">*909#</span>
+                                        </button>
+                                    </div>
+                                    <div id="ussd-code-display" class="hidden mt-3 bg-purple-50 border border-purple-100 rounded-2xl p-4 text-center">
+                                        <p class="text-xs text-on-surface-variant mb-2">Dial this code on your phone</p>
+                                        <p id="ussd-code-text" class="text-2xl font-bold font-mono text-purple-700 tracking-widest"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pay on Delivery -->
+                        <div class="payment-option border-2 border-surface-container-high rounded-2xl p-4" onclick="selectPayment('pod')" id="option-pod">
+                            <div class="flex items-center gap-4">
+                                <div class="option-dot" id="dot-pod"></div>
+                                <div class="flex items-center gap-3 flex-grow">
+                                    <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-orange-500 text-[22px]">local_shipping</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-sm">Pay on Delivery</p>
+                                        <p class="text-[11px] text-on-surface-variant">Cash or POS when your order arrives</p>
+                                    </div>
+                                </div>
+                                <span class="bg-orange-100 text-orange-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Cash/POS</span>
+                            </div>
+                            <!-- POD Panel -->
+                            <div class="payment-panel mt-5 pt-5 border-t border-surface-container-high" id="panel-pod">
+                                <div class="bg-orange-50 border border-orange-100 rounded-2xl p-4 flex gap-3">
+                                    <span class="material-symbols-outlined text-orange-500 text-[22px] flex-shrink-0">info</span>
+                                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                                        Our rider will collect payment upon delivery. <strong>Please have the exact amount ready.</strong> POS machine is available for card payments at delivery.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Order Summary -->
+            <div class="relative">
+                <div class="sticky top-24 bg-white border border-surface-container-high rounded-[2rem] shadow-xl p-6 md:p-8">
+                    <h3 class="font-headline font-bold text-lg text-primary mb-6">Order Summary</h3>
+
+                    <!-- Order Items -->
+                    <div id="checkout-items-list" class="space-y-3 mb-6 max-h-52 overflow-y-auto hide-scrollbar">
+                        <!-- Dynamic content -->
+                    </div>
+
+                    <!-- Totals -->
+                    <div class="border-t border-surface-container-high pt-5 space-y-3 mb-6">
+                        <div class="flex justify-between text-sm text-on-surface-variant">
+                            <span>Subtotal</span>
+                            <span id="co-subtotal" class="font-bold text-on-surface">₦0</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-on-surface-variant">
+                            <span>Gourmet Delivery</span>
+                            <span class="font-bold text-on-surface">₦2,500</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-on-surface-variant">
+                            <span>Service Fee</span>
+                            <span class="font-bold text-on-surface">₦1,000</span>
+                        </div>
+                        <div class="pt-3 border-t border-surface-container-high flex justify-between items-center">
+                            <span class="font-headline font-bold text-primary">Total</span>
+                            <span id="co-total" class="font-headline font-bold text-2xl text-primary">₦0</span>
+                        </div>
+                    </div>
+
+                    <!-- Pay Button -->
+                    <button id="pay-btn" onclick="processPayment()" class="soulful-gradient w-full py-4 rounded-full text-white font-headline font-bold text-sm uppercase tracking-widest active:scale-[0.98] transition-transform flex items-center justify-center gap-3 shadow-xl">
+                        <span id="pay-btn-text">Pay Now</span>
+                        <span class="material-symbols-outlined text-lg">payments</span>
+                    </button>
+
+                    <!-- Trust Badges -->
+                    <div class="mt-5 flex items-center gap-3 bg-surface-container-low rounded-2xl p-4">
+                        <span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0">verified_user</span>
+                        <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">256-bit SSL Encrypted • Gourmet Quality Guaranteed</p>
+                    </div>
+
+                    <div class="mt-4 flex justify-center gap-4 opacity-50">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" class="h-4 object-contain" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" class="h-5 object-contain" alt="Mastercard">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="relative bg-white rounded-[2.5rem] p-10 max-w-md w-full text-center shadow-2xl animate-in fade-in slide-in-from-bottom-10 duration-500">
+            <div class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                <span class="material-symbols-outlined text-green-600 text-5xl material-symbols-fill">check_circle</span>
+            </div>
+            <h2 class="font-headline font-extrabold text-2xl text-primary mb-3">Order Placed! 🎉</h2>
+            <p class="text-on-surface-variant text-sm mb-2">Your gourmet selection is confirmed.</p>
+            <p class="text-on-surface-variant text-sm mb-8">We'll notify you when your order is out for delivery.</p>
+            <div class="bg-surface-container-low rounded-2xl p-4 mb-8">
+                <p class="text-xs uppercase tracking-widest font-bold text-on-surface-variant mb-1">Order Reference</p>
+                <p id="order-ref" class="font-mono font-bold text-primary text-lg"></p>
+            </div>
+            <a href="track.html" class="soulful-gradient text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest inline-flex items-center gap-2 shadow-lg">
+                Track My Order
+                <span class="material-symbols-outlined text-sm">local_shipping</span>
+            </a>
+            <a href="index.html" class="block mt-4 text-sm text-on-surface-variant hover:text-primary transition-colors">Return to Home</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data-service.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let currentPayment = 'card';
+        const DELIVERY_FEE = 2500;
+        const SERVICE_FEE = 1000;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadOrderSummary();
+            formatCardInputs();
+        });
+
+        function loadOrderSummary() {
+            const basket = BasketService.getBasket();
+            const list = document.getElementById('checkout-items-list');
+            const subtotal = BasketService.getBasketTotal();
+            const total = subtotal + DELIVERY_FEE + SERVICE_FEE;
+
+            list.innerHTML = basket.length === 0
+                ? '<p class="text-sm text-on-surface-variant text-center py-4">No items in basket.</p>'
+                : basket.map(item => `
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container-low">
+                            <img src="${item.image}" class="w-full h-full object-cover" alt="${item.name}">
+                        </div>
+                        <div class="flex-grow">
+                            <p class="text-[13px] font-bold line-clamp-1">${item.name}</p>
+                            <p class="text-[11px] text-on-surface-variant">Qty: ${item.quantity}</p>
+                        </div>
+                        <span class="text-sm font-bold text-primary">₦${(item.price * item.quantity).toLocaleString()}</span>
+                    </div>
+                `).join('');
+
+            document.getElementById('co-subtotal').textContent = `₦${subtotal.toLocaleString()}`;
+            document.getElementById('co-total').textContent = `₦${total.toLocaleString()}`;
+            document.getElementById('transfer-amount').textContent = `₦${total.toLocaleString()}`;
+
+            // Update dynamic pay button text
+            updatePayBtnText();
+        }
+
+        function selectPayment(method) {
+            currentPayment = method;
+            const methods = ['card', 'transfer', 'ussd', 'pod'];
+            methods.forEach(m => {
+                const opt = document.getElementById(`option-${m}`);
+                const dot = document.getElementById(`dot-${m}`);
+                const panel = document.getElementById(`panel-${m}`);
+                if (m === method) {
+                    opt.classList.add('selected');
+                    dot.style.backgroundColor = '#C21818';
+                    dot.style.borderColor = '#C21818';
+                    panel.classList.add('active');
+                } else {
+                    opt.classList.remove('selected');
+                    dot.style.backgroundColor = '';
+                    dot.style.borderColor = '#ccc';
+                    panel.classList.remove('active');
+                }
+            });
+            updatePayBtnText();
+        }
+
+        function updatePayBtnText() {
+            const labels = {
+                card: 'Pay with Card',
+                transfer: 'I\'ve Transferred',
+                ussd: 'I\'ve Paid via USSD',
+                pod: 'Place Order (Pay on Delivery)'
+            };
+            document.getElementById('pay-btn-text').textContent = labels[currentPayment] || 'Pay Now';
+        }
+
+        function selectUSSD(btn, code) {
+            document.querySelectorAll('.ussd-bank-btn').forEach(b => {
+                b.classList.remove('border-primary', 'text-primary', 'bg-purple-50');
+                b.classList.add('bg-surface-container-low', 'border-surface-container-high');
+            });
+            btn.classList.add('border-primary', 'text-primary', 'bg-purple-50');
+            btn.classList.remove('bg-surface-container-low', 'border-surface-container-high');
+            document.getElementById('ussd-code-text').textContent = code;
+            document.getElementById('ussd-code-display').classList.remove('hidden');
+        }
+
+        function copyAccountNumber() {
+            navigator.clipboard.writeText('0123456789').then(() => {
+                showToast('Account number copied!');
+            });
+        }
+
+        function formatCardInputs() {
+            const cardNum = document.getElementById('card-number');
+            if (!cardNum) return;
+            cardNum.addEventListener('input', (e) => {
+                let val = e.target.value.replace(/\D/g, '').substring(0, 16);
+                e.target.value = val.replace(/(.{4})/g, '$1 ').trim();
+            });
+            const expiry = document.getElementById('card-expiry');
+            expiry.addEventListener('input', (e) => {
+                let val = e.target.value.replace(/\D/g, '').substring(0, 4);
+                if (val.length >= 2) val = val.substring(0, 2) + ' / ' + val.substring(2);
+                e.target.value = val;
+            });
+        }
+
+        function processPayment() {
+            // Basic validation
+            const name = document.getElementById('checkout-name').value.trim();
+            const phone = document.getElementById('checkout-phone').value.trim();
+            const address = document.getElementById('checkout-address').value.trim();
+
+            if (!name || !phone || !address) {
+                showToast('Please fill in all delivery details.');
+                document.getElementById('checkout-name').focus();
+                return;
+            }
+
+            if (currentPayment === 'card') {
+                const cardNum = document.getElementById('card-number').value.replace(/\s/g,'');
+                const expiry = document.getElementById('card-expiry').value;
+                const cvv = document.getElementById('card-cvv').value;
+                const cardName = document.getElementById('card-name').value.trim();
+                if (!cardNum || cardNum.length < 16 || !expiry || !cvv || !cardName) {
+                    showToast('Please fill in all card details.');
+                    return;
+                }
+            }
+
+            // Simulate processing
+            const btn = document.getElementById('pay-btn');
+            btn.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span class="ml-2">Processing...</span>`;
+            btn.disabled = true;
+
+            setTimeout(() => {
+                // Clear basket
+                BasketService.clearBasket();
+                // Generate order ref
+                const ref = 'MB-' + Date.now().toString(36).toUpperCase();
+                document.getElementById('order-ref').textContent = ref;
+                // Show success
+                document.getElementById('success-modal').classList.remove('hidden');
+                window.dispatchEvent(new Event('basketUpdated'));
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
