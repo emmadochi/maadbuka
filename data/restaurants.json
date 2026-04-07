@@ -1,56 +1,56 @@
 [
   {
     "id": 1,
-    "name": "Kobe Artisanal Sushi",
-    "cuisine": "Sushi",
+    "name": "The Lagos Elite Kitchen",
+    "cuisine": "Gourmet Jollof & Grills",
     "rating": 4.9,
-    "time": "25-35 min",
+    "time": "25-45 min",
     "delivery": "Free Delivery",
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAf8g5zrh5xGtihesF245DZ8cZV8UouyR7GFHrMQeiE0aE2U0U7Je1Za94uphY0xBr8GEtt6v7bQq1j2WsZXo89hzHSIRvXNWBo93mH4Ml_uQHf-ieU4cGlxoqfgmgdku6fch6rag8-ZMZreCRGHMZ35Yy8PQ1tzrEpq68zzl_ayO302zacA6b-lCHSd-rWqg0jQ3Nz_Yyy7tzsgIBPNi5OdmYazrFYE8X2EcZ8l1eZNzHdPzpPz7zYq8DD9HRbYGhKCF1TWbamjkk"
+    "image": "https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 2,
-    "name": "Terra Wood Fired",
-    "cuisine": "Pizza",
+    "name": "Calabar Heritage Dining",
+    "cuisine": "Native Soups & Seafood",
     "rating": 4.7,
-    "time": "20-30 min",
+    "time": "30-50 min",
     "delivery": "$2.99 Delivery",
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAa0ttOhUsKdTov7Kk5_3-hXGXd_S35GaLS4-JdwZKwOGpvhWUw5zToNi9voTIO7Uv25KpTPxjzRFLlg0I6QcTibzMuXJFqthkVjaRQY-VWx-oxmP_2pieLPwFzwMkoQESm264RPlsSgmwqbZ3s1vhtrc54FcHu-bxwUlcT9c1C2T7KLcC2T_xRvH9V8qmLisS2asiK_ISJaz3peb-lWTOf2cSO2SzHtkaO467IFhucTeYXAQg975UscItJESCKjzSnr6yxfdCLmLo"
+    "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 3,
-    "name": "The Burger Atelier",
-    "cuisine": "Burger",
+    "name": "Abuja Royal Grill",
+    "cuisine": "Suya, Asun & Game Meat",
     "rating": 4.8,
-    "time": "15-25 min",
+    "time": "15-30 min",
     "delivery": "Free Delivery",
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAieT-X610hOaYW4PgkOhBphAfXdoNoFkb77oZknC_oWLiEaZ3GT32lDPNCVMwPlSIyYriO_GpGAcP_Nce94dj53XiNA9-ZsFk52wcmehMfGHcSrE_LqXDx5whJ7wK61R8hrN_dcV_zZNWu1nYjzPR09OusIMamiykNpRKzF2FHh8tzAkiqDksVCCAB-P0FpJrCQ4IMFLCQMOVG9o4nDplTCAZ2vwyokrFx1RstGeSzBkfAMXJ4zVOpCoJ1ebSFsHNIUvnxqywDSes"
+    "image": "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 4,
-    "name": "Verde Organic",
-    "cuisine": "Healthy",
+    "name": "The Enugu Hearth",
+    "cuisine": "Traditional Swallows",
     "rating": 4.6,
-    "time": "10-20 min",
+    "time": "20-40 min",
     "delivery": "$1.99 Delivery",
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAnE4S93H-5j6e5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5c"
+    "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 5,
-    "name": "Liquid Gold",
-    "cuisine": "Drinks",
+    "name": "Zuma Artisan Drinks",
+    "cuisine": "Palm Wine & Cocktails",
     "rating": 4.9,
-    "time": "5-15 min",
+    "time": "10-20 min",
     "delivery": "Free Delivery",
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-6v_7-6v_7-6v_7-6v_7-6v_7-6v_7-6v_7-6v_7-6v_7-6v_7-6v_7"
+    "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 6,
-    "name": "Velvet Patisserie",
-    "cuisine": "Desserts",
+    "name": "Ibadan Sweet Bakes",
+    "cuisine": "Small Chops & Pastries",
     "rating": 4.7,
     "time": "20-30 min",
     "delivery": "$3.50 Delivery",
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuB-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9"
+    "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80"
   }
 ]

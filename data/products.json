@@ -1,116 +1,119 @@
 [
   {
     "id": 1,
-    "restaurant_id": 3,
-    "name": "Truffle Burger",
-    "description": "Medium Rare • No Onions",
-    "price": 18.5,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAieT-X610hOaYW4PgkOhBphAfXdoNoFkb77oZknC_oWLiEaZ3GT32lDPNCVMwPlSIyYriO_GpGAcP_Nce94dj53XiNA9-ZsFk52wcmehMfGHcSrE_LqXDx5whJ7wK61R8hrN_dcV_zZNWu1nYjzPR09OusIMamiykNpRKzF2FHh8tzAkiqDksVCCAB-P0FpJrCQ4IMFLCQMOVG9o4nDplTCAZ2vwyokrFx1RstGeSzBkfAMXJ4zVOpCoJ1ebSFsHNIUvnxqywDSes"
+    "restaurant_id": 1,
+    "name": "Smoky Party Jollof Rice",
+    "description": "Authentic firewood taste • Grilled Chicken • Fried Plantain",
+    "price": 12.5,
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+    "category": "Rice"
   },
   {
     "id": 2,
-    "restaurant_id": 3,
-    "name": "Parmesan Fries",
-    "description": "With Garlic Aioli Dip",
-    "price": 7.0,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBVWLCF0O9yEL7pV4A-Su-5_SZn_LLdPTzKXg2zq5tyThMUHS379hvTQMZkY6iVqjd51OeeBB_X3YhXxStM3m7skPFoNn1VmGE81ja1nyljYaHe9aqrGCLsY696D9n54yLxQ06N4pv904r5kODkKm_NIYdyNUffg0hLCaQZAgndaZGQu5OM-bA1ZkY-eJagl9iYzvOr_EUq4I-u-U8lszLQUqC-JnMwooAqw5QyRLnYhhpF6iEBl8am7plG_lYCAeXAN-oZZnuMB4E"
+    "restaurant_id": 2,
+    "name": "Gourmet Egusi Soup",
+    "description": "Fresh Spinach • Assorted Meat • Pounded Yam",
+    "price": 18.0,
+    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80",
+    "category": "Soups"
   },
   {
     "id": 3,
     "restaurant_id": 3,
-    "name": "Craft Cola",
-    "description": "Classic Botanical Brew",
-    "price": 4.5,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBXbqcVlbftIdMvbu6QymXtQ3unCvzdy_cy1IvxBulSYCdFrsyVnU_376tbKMeGT_4vwpG-7bUZRtiyKptnbzi-OZc2Hm7JLd7WcWvkRWmHA-HNOcBhO2_ggKFCTNfd_tf_0GWRO0lqkodAbH_ns8S_F_6o_rszWZ5D38NCL5ec94opnHA_jWm8ugDLW5Zat7S6GkD5g7O9GXJH8rneunSq0iU_ht3lb9zYWWgLr7C2S-KOMQxt4og4HbZtJVW1u7fj3d6NYig_zhU"
+    "name": "Spicy Beef Suya Platter",
+    "description": "Slow Grilled • Yaji Spice • Sliced Onions",
+    "price": 15.0,
+    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+    "category": "Grills"
   },
   {
     "id": 4,
-    "restaurant_id": 1,
-    "name": "Dragon Roll",
-    "description": "Tempura Shrimp • Avocado • Unagi Sauce",
-    "price": 16.5,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuC-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8-8v_8",
-    "category": "Sushi"
+    "restaurant_id": 3,
+    "name": "Asun (Spicy Roasted Goat)",
+    "description": "Flame Roasted • Scotch Bonnet • Green Peppers",
+    "price": 22.0,
+    "image": "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80",
+    "category": "Grills"
   },
   {
     "id": 5,
-    "restaurant_id": 1,
-    "name": "Salmon Nigiri Set",
-    "description": "6 Pieces • Fresh Atlantic Salmon",
-    "price": 22.0,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7-7v_7",
-    "category": "Sushi"
+    "restaurant_id": 4,
+    "name": "Artisan Pounded Yam",
+    "description": "Served with Efo Riro • Stock Fish • Ponmo",
+    "price": 20.0,
+    "image": "https://images.unsplash.com/photo-1620843026938-167812e95646?auto=format&fit=crop&w=800&q=80",
+    "category": "Swallow"
   },
   {
     "id": 6,
-    "restaurant_id": 2,
-    "name": "Margherita Classica",
-    "description": "San Marzano • Buffalo Mozzarella",
-    "price": 14.5,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuE-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6-6v_6",
-    "category": "Pizza"
+    "restaurant_id": 6,
+    "name": "Supreme Akara & Custard",
+    "description": "Light • Fluffy • Served with Honey Milk Custard",
+    "price": 8.5,
+    "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=800&q=80",
+    "category": "Breakfast"
   },
   {
     "id": 7,
-    "restaurant_id": 2,
-    "name": "Truffle Mushroom Pizza",
-    "description": "Wild Mushrooms • Truffle Oil • Fontina",
-    "price": 19.0,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuF-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5-5v_5",
-    "category": "Pizza"
+    "restaurant_id": 6,
+    "name": "Moin Moin Elemi Meji",
+    "description": "Steamed Bean Pudding • Hard Boiled Egg • Flaked Fish",
+    "price": 7.0,
+    "image": "https://images.unsplash.com/photo-1608447714925-599deeb5a682?auto=format&fit=crop&w=800&q=80",
+    "category": "Small Chops"
   },
   {
     "id": 8,
-    "restaurant_id": 4,
-    "name": "Quinoa Power Bowl",
-    "description": "Avocado • Sweet Potato • Tahini Dressing",
-    "price": 15.0,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuG-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4-4v_4",
-    "category": "Healthy"
+    "restaurant_id": 2,
+    "name": "Catfish Pepper Soup",
+    "description": "Point-and-Kill Freshness • Native Spices • Hot Broth",
+    "price": 25.0,
+    "image": "https://images.unsplash.com/photo-1542362567-b04400279c12?auto=format&fit=crop&w=800&q=80",
+    "category": "Soups"
   },
   {
     "id": 9,
-    "restaurant_id": 4,
-    "name": "Avocado Toast",
-    "description": "Sourdough • Poached Egg • Chili Flakes",
-    "price": 12.5,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuH-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3-3v_3",
-    "category": "Healthy"
+    "restaurant_id": 3,
+    "name": "Bole & Grilled Fish",
+    "description": "Roasted Plantain • Croaker Fish • Pepper Sauce",
+    "price": 18.5,
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80",
+    "category": "Grills"
   },
   {
     "id": 10,
     "restaurant_id": 5,
-    "name": "Fresh Ginger Ale",
-    "description": "Cold Pressed Ginger • Lime • Agave",
-    "price": 6.5,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuI-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2-2v_2",
+    "name": "Zuma Palm Wine Punch",
+    "description": "Chilled • Refined • Infused with Ginger",
+    "price": 10.0,
+    "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80",
     "category": "Drinks"
   },
   {
     "id": 11,
-    "restaurant_id": 5,
-    "name": "Berry Smoothie",
-    "description": "Mixed Berries • Greek Yogurt • Honey",
-    "price": 8.0,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuJ-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1-1v_1",
-    "category": "Drinks"
+    "restaurant_id": 6,
+    "name": "Puff Puff Platter",
+    "description": "8 Pieces • Sizzling Hot • Dusted with Sugar",
+    "price": 5.5,
+    "image": "https://images.unsplash.com/photo-1620131498420-56e6d1948574?auto=format&fit=crop&w=800&q=80",
+    "category": "Small Chops"
   },
   {
     "id": 12,
-    "restaurant_id": 6,
-    "name": "Matcha Lava Cake",
-    "description": "Dark Chocolate • Premium Matcha",
-    "price": 11.0,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuK-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0-0v_0",
-    "category": "Desserts"
+    "restaurant_id": 1,
+    "name": "Smoky Fried Rice",
+    "description": "Gourmet Style • Jumbo Prawns • Mixed Veggies",
+    "price": 14.0,
+    "image": "https://images.unsplash.com/photo-1512058560364-9bc087f9da92?auto=format&fit=crop&w=800&q=80",
+    "category": "Rice"
   },
   {
     "id": 13,
-    "restaurant_id": 6,
-    "name": "Classic Tiramisu",
-    "description": "Espresso • Mascarpone • Cocoa",
-    "price": 9.5,
-    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuL-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9-9v_9",
-    "category": "Desserts"
+    "restaurant_id": 1,
+    "name": "Gourmet Meat Pies",
+    "description": "Buttery Crust • Seasoned Minced Beef • 3 Pieces",
+    "price": 9.0,
+    "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80",
+    "category": "Small Chops"
   }
 ]
