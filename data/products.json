@@ -4,7 +4,7 @@
     "restaurant_id": 1,
     "name": "Smoky Party Jollof Rice",
     "description": "Authentic firewood taste • Grilled Chicken • Fried Plantain",
-    "price": 12.5,
+    "price": 12500,
     "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
     "category": "Rice"
   },
@@ -13,7 +13,7 @@
     "restaurant_id": 2,
     "name": "Gourmet Egusi Soup",
     "description": "Fresh Spinach • Assorted Meat • Pounded Yam",
-    "price": 18.0,
+    "price": 18000,
     "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80",
     "category": "Soups"
   },
@@ -22,7 +22,7 @@
     "restaurant_id": 3,
     "name": "Spicy Beef Suya Platter",
     "description": "Slow Grilled • Yaji Spice • Sliced Onions",
-    "price": 15.0,
+    "price": 15000,
     "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
     "category": "Grills"
   },
@@ -31,7 +31,7 @@
     "restaurant_id": 3,
     "name": "Asun (Spicy Roasted Goat)",
     "description": "Flame Roasted • Scotch Bonnet • Green Peppers",
-    "price": 22.0,
+    "price": 22000,
     "image": "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80",
     "category": "Grills"
   },
@@ -40,7 +40,7 @@
     "restaurant_id": 4,
     "name": "Artisan Pounded Yam",
     "description": "Served with Efo Riro • Stock Fish • Ponmo",
-    "price": 20.0,
+    "price": 20000,
     "image": "https://images.unsplash.com/photo-1620843026938-167812e95646?auto=format&fit=crop&w=800&q=80",
     "category": "Swallow"
   },
@@ -49,7 +49,7 @@
     "restaurant_id": 6,
     "name": "Supreme Akara & Custard",
     "description": "Light • Fluffy • Served with Honey Milk Custard",
-    "price": 8.5,
+    "price": 8500,
     "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=800&q=80",
     "category": "Breakfast"
   },
@@ -58,7 +58,7 @@
     "restaurant_id": 6,
     "name": "Moin Moin Elemi Meji",
     "description": "Steamed Bean Pudding • Hard Boiled Egg • Flaked Fish",
-    "price": 7.0,
+    "price": 7000,
     "image": "https://images.unsplash.com/photo-1608447714925-599deeb5a682?auto=format&fit=crop&w=800&q=80",
     "category": "Small Chops"
   },
@@ -67,7 +67,7 @@
     "restaurant_id": 2,
     "name": "Catfish Pepper Soup",
     "description": "Point-and-Kill Freshness • Native Spices • Hot Broth",
-    "price": 25.0,
+    "price": 25000,
     "image": "https://images.unsplash.com/photo-1542362567-b04400279c12?auto=format&fit=crop&w=800&q=80",
     "category": "Soups"
   },
@@ -76,7 +76,7 @@
     "restaurant_id": 3,
     "name": "Bole & Grilled Fish",
     "description": "Roasted Plantain • Croaker Fish • Pepper Sauce",
-    "price": 18.5,
+    "price": 18500,
     "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80",
     "category": "Grills"
   },
@@ -85,7 +85,7 @@
     "restaurant_id": 5,
     "name": "Zuma Palm Wine Punch",
     "description": "Chilled • Refined • Infused with Ginger",
-    "price": 10.0,
+    "price": 10000,
     "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80",
     "category": "Drinks"
   },
@@ -94,7 +94,7 @@
     "restaurant_id": 6,
     "name": "Puff Puff Platter",
     "description": "8 Pieces • Sizzling Hot • Dusted with Sugar",
-    "price": 5.5,
+    "price": 5500,
     "image": "https://images.unsplash.com/photo-1620131498420-56e6d1948574?auto=format&fit=crop&w=800&q=80",
     "category": "Small Chops"
   },
@@ -103,7 +103,7 @@
     "restaurant_id": 1,
     "name": "Smoky Fried Rice",
     "description": "Gourmet Style • Jumbo Prawns • Mixed Veggies",
-    "price": 14.0,
+    "price": 14000,
     "image": "https://images.unsplash.com/photo-1512058560364-9bc087f9da92?auto=format&fit=crop&w=800&q=80",
     "category": "Rice"
   },
@@ -112,7 +112,7 @@
     "restaurant_id": 1,
     "name": "Gourmet Meat Pies",
     "description": "Buttery Crust • Seasoned Minced Beef • 3 Pieces",
-    "price": 9.0,
+    "price": 9000,
     "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80",
     "category": "Small Chops"
   }

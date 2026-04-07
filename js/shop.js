@@ -85,7 +85,7 @@ function renderTrending() {
             </div>
             <h4 class="font-bold text-xs line-clamp-1 text-slate-800">${p.name}</h4>
             <div class="flex justify-between items-center mt-1">
-                <span class="font-headline font-extrabold text-sm text-primary">$${p.price.toFixed(2)}</span>
+                <span class="font-headline font-extrabold text-sm text-primary">₦${p.price.toLocaleString()}</span>
                 <div class="w-6 h-6 rounded-full bg-surface-container-low text-primary flex items-center justify-center active:scale-90 transition-transform group-hover:bg-primary group-hover:text-white">
                     <span class="material-symbols-outlined text-[14px]">visibility</span>
                 </div>
@@ -165,7 +165,7 @@ function updateGrid() {
                     <p class="text-[10px] text-on-surface-variant line-clamp-1 mt-0.5 italic">${p.description}</p>
                 </div>
                 <div class="flex items-center justify-between mt-2">
-                    <span class="font-headline font-extrabold text-lg text-primary">$${p.price.toFixed(2)}</span>
+                    <span class="font-headline font-extrabold text-lg text-primary">₦${p.price.toLocaleString()}</span>
                     <div class="w-8 h-8 rounded-full bg-surface-container-low text-primary flex items-center justify-center active:scale-95 transition-transform shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
                         <span class="material-symbols-outlined text-[18px]">visibility</span>
                     </div>

@@ -96,7 +96,7 @@ function renderFeaturedMeals(meals) {
             <div class="relative aspect-square rounded-lg overflow-hidden bg-surface-container-low">
                 <img alt="${m.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${m.image}"/>
                 <div class="absolute top-2 right-2 px-2 py-1 bg-white/90 backdrop-blur text-[10px] font-bold rounded-full text-primary shadow-sm">
-                    $${m.price.toFixed(2)}
+                    ₦${m.price.toLocaleString()}
                 </div>
             </div>
             <div class="flex flex-col gap-1">
@@ -123,7 +123,7 @@ function openProductModal(product) {
     modalQuantity = 1;
     
     document.getElementById('modal-product-name').textContent = product.name;
-    document.getElementById('modal-product-price').textContent = `$${product.price.toFixed(2)}`;
+    document.getElementById('modal-product-price').textContent = `₦${product.price.toLocaleString()}`;
     document.getElementById('modal-product-description').textContent = product.description || 'Gourmet selection prepared with fresh ingredients.';
     document.getElementById('modal-product-image').src = product.image;
     document.getElementById('modal-quantity').textContent = modalQuantity;
@@ -230,7 +230,7 @@ function initBasketPage() {
                 <a href="index.html" class="soulful-gradient text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider">Browse Dishes</a>
             </div>
         `;
-        if (totalEl) totalEl.textContent = '$0.00';
+        if (totalEl) totalEl.textContent = '₦0';
         // Hide summary section if empty
         const summary = document.getElementById('basket-summary');
         if (summary) summary.classList.add('hidden');
@@ -262,7 +262,7 @@ function initBasketPage() {
                     ` : ''}
                 </div>
                 <div class="flex justify-between items-end">
-                    <span class="font-headline font-bold text-xl">$${(item.price * item.quantity).toFixed(2)}</span>
+                    <span class="font-headline font-bold text-xl">₦${(item.price * item.quantity).toLocaleString()}</span>
                     <div class="bg-surface-container-low rounded-full flex items-center p-1 px-2 gap-4 border border-surface-container-high">
                         <button onclick="BasketService.removeFromBasket(${item.id}, '${item.customizations || ''}')" class="w-8 h-8 rounded-full flex items-center justify-center bg-white shadow-sm active:scale-90 transition-transform">
                             <span class="material-symbols-outlined text-sm">remove</span>
@@ -277,11 +277,17 @@ function initBasketPage() {
         </div>
     `).join('');
 
-    if (totalEl) totalEl.textContent = `$${BasketService.getBasketTotal().toFixed(2)}`;
+    // Calculate and update totals with fees
+    const subtotal = BasketService.getBasketTotal();
+    const deliveryFee = 2500;
+    const serviceFee = 1000;
+    const grandTotal = subtotal + deliveryFee + serviceFee;
+
+    if (totalEl) totalEl.textContent = `₦${grandTotal.toLocaleString()}`;
     
     // Update mobile total if exists
     const totalMobileEl = document.getElementById('basket-total-mobile');
-    if (totalMobileEl) totalMobileEl.textContent = `$${BasketService.getBasketTotal().toFixed(2)}`;
+    if (totalMobileEl) totalMobileEl.textContent = `₦${grandTotal.toLocaleString()}`;
 
     // Show/Hide mobile summary
     const summaryMobile = document.getElementById('basket-summary-mobile');
@@ -292,7 +298,7 @@ function initBasketPage() {
 
     // Update subtotal, taxes, etc if they exist
     const subtotalEl = document.getElementById('basket-subtotal');
-    if (subtotalEl) subtotalEl.textContent = `$${BasketService.getBasketTotal().toFixed(2)}`;
+    if (subtotalEl) subtotalEl.textContent = `₦${BasketService.getBasketTotal().toLocaleString()}`;
 }
 
 /**
@@ -347,7 +353,7 @@ function injectProductModal() {
             <div class="p-6 overflow-y-auto hide-scrollbar flex-grow">
                 <div class="flex justify-between items-start mb-2">
                     <h2 id="modal-product-name" class="text-2xl font-headline font-extrabold text-primary">Dish Name</h2>
-                    <span id="modal-product-price" class="text-xl font-bold bg-secondary-container px-3 py-1 rounded-full text-slate-800">$0.00</span>
+                    <span id="modal-product-price" class="text-xl font-bold bg-secondary-container px-3 py-1 rounded-full text-slate-800">₦0</span>
                 </div>
                 <p id="modal-product-description" class="text-on-surface-variant text-sm mb-6"></p>
                 
